@@ -8,6 +8,7 @@ import { HomeCategoriesListComponent } from './components/home-categories-list/h
 import { CarouselProductItensComponent } from './components/carousel-product-itens/carousel-product-itens.component';
 import { ActionSectionComponent } from './components/action-section/action-section.component';
 import { FormsModule } from '@angular/forms';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { FormsModule } from '@angular/forms';
     HomeCategoriesListComponent,
     CarouselProductItensComponent,
     ActionSectionComponent,
+    FooterComponent,
   ],
   imports: [
     CommonModule,
@@ -33,6 +35,7 @@ import { FormsModule } from '@angular/forms';
     HomeCategoriesListComponent,
     CarouselProductItensComponent,
     ActionSectionComponent,
+    FooterComponent,
   ],
   providers: [
     NgbCarouselConfig
