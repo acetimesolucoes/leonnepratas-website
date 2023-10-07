@@ -5,6 +5,8 @@ import { HomeCarouselComponent } from './components/home-carousel/home-carousel.
 import { NgbCarouselConfig, NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 import { DisplayHomeIconsComponent } from './components/display-home-icons/display-home-icons.component';
 import { HomeCategoriesListComponent } from './components/home-categories-list/home-categories-list.component';
+import { CarouselProductItensComponent } from './components/carousel-product-itens/carousel-product-itens.component';
+import { ActionSectionComponent } from './components/action-section/action-section.component';
 
 @NgModule({
   declarations: [
@@ -12,6 +14,8 @@ import { HomeCategoriesListComponent } from './components/home-categories-list/h
     HomeCarouselComponent,
     DisplayHomeIconsComponent,
     HomeCategoriesListComponent,
+    CarouselProductItensComponent,
+    ActionSectionComponent,
   ],
   imports: [
     CommonModule,
@@ -23,6 +27,8 @@ import { HomeCategoriesListComponent } from './components/home-categories-list/h
     HomeCarouselComponent,
     DisplayHomeIconsComponent,
     HomeCategoriesListComponent,
+    CarouselProductItensComponent,
+    ActionSectionComponent,
   ],
   providers: [
     NgbCarouselConfig
