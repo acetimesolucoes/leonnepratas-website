@@ -6,7 +6,7 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    loadChildren: () => import('./modules/b2b-module/b2b-home/b2b-home-routing.module').then(mod => mod.B2bHomeRoutingModule)
+    loadChildren: () => import('./modules/b2b-module/b2b-module-routing.module').then(mod => mod.B2bModuleRoutingModule)
   }
 ];
 

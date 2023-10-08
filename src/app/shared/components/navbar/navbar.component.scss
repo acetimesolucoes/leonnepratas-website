@@ -2,3 +2,19 @@
     width: 150px;
     height: auto;
 }
+
+.btn-icon {
+    width: 25px;
+    height: 25px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.btn-cart {
+    background-image: url("./../../../../assets/shopping-cart.png");
+}
+
+.btn-profile {
+    background-image: url("./../../../../assets/user.png");
+}

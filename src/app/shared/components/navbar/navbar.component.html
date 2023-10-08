@@ -21,67 +21,42 @@
     <div
       class="collapse navbar-collapse justify-content-center"
       id="navbarSupportedContent"
-    >
-      <ul class="nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Categoria</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Categoria</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Categoria</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Categoria</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Categoria</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Categoria</a>
-        </li>
-      </ul>
+    ></div>
+
+    <div class="d-grid gap-2 d-md-block">
+      <button class="btn btn-primary position-relative" type="button">
+        <div class="btn-icon btn-cart"></div>
+        <span
+          class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+        >
+          99+
+          <span class="visually-hidden">unread messages</span>
+        </span>
+      </button>
+      <button class="btn btn-primary" type="button">
+        <div class="btn-icon btn-profile"></div>
+      </button>
     </div>
 
-    <ul class="nav justify-content-end">
+    <!-- <ul class="nav justify-content-end">
       <li class="nav-item">
-        <a class="nav-link">Search</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link">Cart</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link">Profile</a>
-      </li>
-    </ul>
-
-    <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="nav navbar-nav justify-content-center mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
+        <button type="button" class="btn btn-primary position-relative">
+          Cart
+          <span
+            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
           >
-            Dropdown
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider" /></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div> -->
+            99+
+            <span class="visually-hidden">unread messages</span>
+          </span>
+        </button>
+      </li>
+      <li class="nav-item">
+        <button type="button" class="btn btn-primary position-relative">
+          Profile
+        </button>
+      </li>
+    </ul> -->
   </div>
 </nav>
+
+<app-navbar-categories></app-navbar-categories>

@@ -9,6 +9,7 @@ import { CarouselProductItensComponent } from './components/carousel-product-ite
 import { ActionSectionComponent } from './components/action-section/action-section.component';
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from './components/footer/footer.component';
+import { NavbarCategoriesComponent } from './components/navbar-categories/navbar-categories.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { FooterComponent } from './components/footer/footer.component';
     CarouselProductItensComponent,
     ActionSectionComponent,
     FooterComponent,
+    NavbarCategoriesComponent,
   ],
   imports: [
     CommonModule,
