@@ -10,6 +10,7 @@ import { ActionSectionComponent } from './components/action-section/action-secti
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarCategoriesComponent } from './components/navbar-categories/navbar-categories.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { NavbarCategoriesComponent } from './components/navbar-categories/navbar
     NgbCarouselModule,
     NgFor,
     FormsModule,
+    RouterModule,
   ],
   exports: [
     NavbarComponent,

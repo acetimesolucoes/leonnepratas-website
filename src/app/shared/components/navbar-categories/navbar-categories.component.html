@@ -1,34 +1,30 @@
-<!-- <nav class="navbar bg-body-tertiary">
-  <div class="container">
-    <div class="justify-content-center">
-      <ul class="nav justify-content-center">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Active</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav> -->
-
-<div>
-  <ul class="nav justify-content-center">
+<div
+  class="navbar bg-primary text-light justify-content-center subnav-categories"
+>
+  <ul class="nav">
     <li class="nav-item">
-      <a class="nav-link active" href="#">Category</a>
+      <a
+        class="nav-link active"
+        [routerLink]="['/category/aneis']"
+        routerLinkActive="router-link-active"
+        >Aneis</a
+      >
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Category</a>
+      <a
+        class="nav-link"
+        [routerLink]="['/category/aneis']"
+        routerLinkActive="router-link-active"
+        >Brincos</a
+      >
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Category</a>
+      <a
+        class="nav-link"
+        [routerLink]="['/category/aneis']"
+        routerLinkActive="router-link-active"
+        >Colares</a
+      >
     </li>
   </ul>
 </div>
