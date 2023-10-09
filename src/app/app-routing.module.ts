@@ -5,9 +5,9 @@ import { B2bModuleModule } from './modules/b2b-module/b2b-module.module';
 const routes: Routes = [
   {
     path: '',
-    pathMatch: 'full',
+    pathMatch: 'prefix',
     loadChildren: () => import('./modules/b2b-module/b2b-module-routing.module').then(mod => mod.B2bModuleRoutingModule)
-  }
+  },
 ];
 
 @NgModule({
