@@ -10,7 +10,15 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./home-carousel.component.scss'],
 })
 export class HomeCarouselComponent {
-  images = [700, 533, 807, 124].map((n) => `https://picsum.photos/id/${n}/2800/750`);
+  images = [700, 533, 807, 124].map((n) => {
+    return {
+      xs: `https://picsum.photos/id/${n}/400/500`,
+      sm: `https://picsum.photos/id/${n}/700/800`,
+      md: `https://picsum.photos/id/${n}/900/750`,
+      lg: `https://picsum.photos/id/${n}/1280/900`,
+      xl: `https://picsum.photos/id/${n}/2800/900`,
+    }
+  });
 
   paused = false;
   unpauseOnArrow = false;

@@ -1,5 +1,24 @@
 footer {
     background-color: rgb(133, 235, 246);
+    color: white;
     width: 100%;
     margin: 0px;
+
+    a {
+        color: white;
+    }
+    a:hover {
+        text-decoration-line: underline;
+        text-decoration-color: white;
+    }
+}
+
+.payment-method img {
+    width: 50px;
+    height: auto;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    margin: 10px;
 }

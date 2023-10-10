@@ -18,7 +18,12 @@ $black: #000 !default;
 
 // OVERRIDES
 $primary: $primary-dark;
-$link-color: $white;
+$card-border-color: $primary;
+// $link-color: $white;
+
+.border-top-primary {
+    border-top: 8px solid $primary !important;
+}
 
 /* Importing Bootstrap SCSS file. */
 @import "bootstrap/scss/bootstrap";

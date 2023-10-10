@@ -8,6 +8,11 @@
     background-size: cover;
 }
 
+.icon-2 {
+    width: 20px;
+    height: 20px;
+}
+
 .icon-5 {
     width: 50px;
     height: 50px;
@@ -21,7 +26,27 @@
     background-image: url("./assets/shipping.svg");
 }
 
+.icon-bargain {
+    background-image: url("./assets/cofrinho.svg");
+}
+
+.icon-fire {
+    background-image: url("./assets/fire.svg");
+}
+
 .icon-title {
     font-weight: 900;
     font-size: 1.5rem;
+}
+
+.btn-primary {
+    color: white;
+}
+
+.btn-primary:hover {
+    color: white;
+}
+
+.btn-primary:active {
+    color: white;
 }

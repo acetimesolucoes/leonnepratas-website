@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarCategoriesComponent } from './components/navbar-categories/navbar-categories.component';
 import { RouterModule } from '@angular/router';
+import { B2bProductCardComponent } from './components/b2b-product-card/b2b-product-card.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { RouterModule } from '@angular/router';
     ActionSectionComponent,
     FooterComponent,
     NavbarCategoriesComponent,
+    B2bProductCardComponent,
   ],
   imports: [
     CommonModule,
