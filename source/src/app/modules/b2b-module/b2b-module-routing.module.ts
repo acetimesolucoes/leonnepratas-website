@@ -18,10 +18,6 @@ const routes: Routes = [
         component: B2bHomeComponent,
       },
       {
-        path: ':id',
-        component: B2bProductDetailComponent,
-      },
-      {
         path: 'category/:param',
         component: B2bProductDetailComponent,
       },
@@ -36,6 +32,10 @@ const routes: Routes = [
       {
         path: 'politicas-de-troca',
         component: B2bPoliticasDeTrocaComponent,
+      },
+      {
+        path: ':id',
+        component: B2bProductDetailComponent,
       },
     ]
   }
