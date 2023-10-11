@@ -22,15 +22,15 @@ const routes: Routes = [
         component: B2bProductDetailComponent,
       },
       {
-        path: 'politicas-de-privacidade',
+        path: 'politica-de-privacidade',
         component: B2bPoliticasDePrivacidadeComponent,
       },
       {
-        path: 'politicas-de-garantia',
+        path: 'politica-de-garantia',
         component: B2bPoliticasDeGarantiaComponent,
       },
       {
-        path: 'politicas-de-troca',
+        path: 'politica-de-troca',
         component: B2bPoliticasDeTrocaComponent,
       },
       {
