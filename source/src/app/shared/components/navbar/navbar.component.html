@@ -7,26 +7,22 @@
       <div class="logomarca"></div>
     </div>
 
-    <!-- <div
-        class="col-12 col-sm-12 col-md-auto col-lg-auto col-xl-auto col-xxl-auto mt-3"
+    <!-- <div class="input-group">
+      <input
+        type="text"
+        class="form-control"
+        placeholder=""
+        aria-label=""
+        aria-describedby="button-addon2"
+      />
+      <button
+        class="btn btn-outline-secondary btn-outline-input"
+        type="button"
+        id="button-addon2"
       >
-        <div class="input-group mb-3">
-          <input
-            type="text"
-            class="form-control"
-            placeholder=""
-            aria-label=""
-            aria-describedby="button-addon2"
-          />
-          <button
-            class="btn btn-outline-secondary btn-outline-input"
-            type="button"
-            id="button-addon2"
-          >
-            <div class="btn-icon btn-search"></div>
-          </button>
-        </div>
-      </div> -->
+        <div class="btn-icon btn-search"></div>
+      </button>
+    </div> -->
 
     <div
       class="col-auto col-sm-auto col-md-auto col-lg-auto col-xl-auto col-xxl-auto"
@@ -39,6 +35,7 @@
         <div class="btn-icon btn-cart"></div>
         <span
           class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-light text-primary"
+          *ngIf="cart_products && cart_products.length > 0"
         >
           {{ cart_products.length }}
           <span class="visually-hidden">unread messages</span>
@@ -74,6 +71,7 @@
             [src]="pictureUrlToSanitize(product.picture_url)"
             class="rounded float-start"
             alt="..."
+            (click)="navigateToProductDetail(product.title)"
           />
 
           <div class="flex flex-row ps-3 pe-3">
@@ -112,12 +110,16 @@
   <div class="offcanvas-footer">
     <hr class="bg-primary" />
     <div class="d-flex justify-content-between pt-3 pb-3">
-      <h3 class="text-primary"><strong>Sub-Total:</strong></h3>
+      <h3 class="text-primary"><strong>Total:</strong></h3>
       <div class="d-flex flex-column align-items-end">
         <h3 class="text-primary">
           <strong>{{ getTotalCart() | currency : "BRL" }}</strong>
         </h3>
-        <h6>{{ getTotalDivision() | currency : "BRL" }}</h6>
+        <p class="text-end">
+          Ou até <strong>{{ getParcelaMaximaSemJuros() }}x</strong> de
+          <strong>{{ getValorParcelasSemJuros() | currency : "BRL" }}</strong>
+          <br />sem juros
+        </p>
       </div>
     </div>
     <div class="d-grid gap-2">

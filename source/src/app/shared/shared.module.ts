@@ -42,6 +42,7 @@ import { B2bProductCardComponent } from './components/b2b-product-card/b2b-produ
     CarouselProductItensComponent,
     ActionSectionComponent,
     FooterComponent,
+    B2bProductCardComponent,
   ],
   providers: [
     NgbCarouselConfig

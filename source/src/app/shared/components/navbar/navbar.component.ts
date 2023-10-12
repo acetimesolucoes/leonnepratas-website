@@ -72,9 +72,15 @@ export class NavbarComponent {
     return total;
   }
 
-  getTotalDivision() {
-    let parcelaMaximaSemJuros = 3;
-    return `Ou até ${3}x de ${this.getTotalCart() / parcelaMaximaSemJuros}`;
+  getParcelaMaximaSemJuros() {
+    return 3;
+  }
+
+  getValorParcelasSemJuros() {
+    let parcelaMaximaSemJuros = this.getParcelaMaximaSemJuros();
+    let valorParcelasSemJuros = (this.getTotalCart() / parcelaMaximaSemJuros).toFixed(2);
+
+    return valorParcelasSemJuros;
   }
 
   navigateToProductDetail(productTitle: string) {
