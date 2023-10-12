@@ -31,12 +31,16 @@
     <div
       class="col-auto col-sm-auto col-md-auto col-lg-auto col-xl-auto col-xxl-auto"
     >
-      <button class="btn position-relative bg-transparent" type="button">
+      <button
+        class="btn position-relative bg-transparent"
+        type="button"
+        (click)="openCartModal(content)"
+      >
         <div class="btn-icon btn-cart"></div>
         <span
           class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-light text-primary"
         >
-          3
+          {{ cart_products.length }}
           <span class="visually-hidden">unread messages</span>
         </span>
       </button>
@@ -48,3 +52,85 @@
 </nav>
 
 <app-navbar-categories></app-navbar-categories>
+
+<ng-template #content let-offcanvas>
+  <div class="offcanvas-header">
+    <h4 class="offcanvas-title">Carrinho de Compras</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="offcanvas.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="list-group list-group-cart">
+      <li
+        class="list-group-item d-flex justify-content-between align-items-start"
+        *ngFor="let product of cart_products"
+      >
+        <div class="d-flex">
+          <img
+            [src]="pictureUrlToSanitize(product.picture_url)"
+            class="rounded float-start"
+            alt="..."
+          />
+
+          <div class="flex flex-row ps-3 pe-3">
+            <p (click)="navigateToProductDetail(product.title)">
+              {{ product.title }}
+            </p>
+
+            <div class="area-cart-item-buttons">
+              <div class="input-group input-change-product-quantity">
+                <button class="btn" type="button" id="button-addon1">
+                  <i class="bi bi-dash"></i>
+                </button>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder=""
+                  aria-label="Example text with button addon"
+                  aria-describedby="button-addon1"
+                  [value]="product.quantity"
+                />
+                <button class="btn" type="button" id="button-addon1">
+                  <i class="bi bi-plus"></i>
+                </button>
+              </div>
+
+              <div class="d-flex align-items-center">
+                {{ product.price | currency : "BRL" }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="btn transparent"><i class="bi bi-trash"></i></button>
+      </li>
+    </ul>
+  </div>
+  <div class="offcanvas-footer">
+    <hr class="bg-primary" />
+    <div class="d-flex justify-content-between pt-3 pb-3">
+      <h3 class="text-primary"><strong>Sub-Total:</strong></h3>
+      <div class="d-flex flex-column align-items-end">
+        <h3 class="text-primary">
+          <strong>{{ getTotalCart() | currency : "BRL" }}</strong>
+        </h3>
+        <h6>{{ getTotalDivision() | currency : "BRL" }}</h6>
+      </div>
+    </div>
+    <div class="d-grid gap-2">
+      <button class="btn btn-primary" type="button">
+        <span class="text-upper">Finalizar Compra</span>
+      </button>
+      <button
+        class="btn btn-link"
+        type="button"
+        (click)="offcanvas.close('Close click')"
+      >
+        Ver mais produtos
+      </button>
+    </div>
+  </div>
+</ng-template>

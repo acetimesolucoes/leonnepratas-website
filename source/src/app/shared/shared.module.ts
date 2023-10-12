@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeCarouselComponent } from './components/home-carousel/home-carousel.component';
-import { NgbCarouselConfig, NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCarouselConfig, NgbCarouselModule, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { DisplayHomeIconsComponent } from './components/display-home-icons/display-home-icons.component';
 import { HomeCategoriesListComponent } from './components/home-categories-list/home-categories-list.component';
 import { CarouselProductItensComponent } from './components/carousel-product-itens/carousel-product-itens.component';
@@ -27,9 +27,9 @@ import { B2bProductCardComponent } from './components/b2b-product-card/b2b-produ
   ],
   imports: [
     CommonModule,
-    NgbCarouselModule,
     NgIf,
     NgbCarouselModule,
+    NgbRatingModule,
     NgFor,
     FormsModule,
     RouterModule,

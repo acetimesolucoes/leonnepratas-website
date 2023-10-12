@@ -6,6 +6,7 @@ import { B2bProductDetailComponent } from './b2b-product-detail/b2b-product-deta
 import { B2bPoliticasDePrivacidadeComponent } from './b2b-politicas-de-privacidade/b2b-politicas-de-privacidade.component';
 import { B2bPoliticasDeGarantiaComponent } from './b2b-politicas-de-garantia/b2b-politicas-de-garantia.component';
 import { B2bPoliticasDeTrocaComponent } from './b2b-politicas-de-troca/b2b-politicas-de-troca.component';
+import { B2bPromocaoFreteGratisComponent } from './b2b-promocao-frete-gratis/b2b-promocao-frete-gratis.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,10 @@ const routes: Routes = [
       {
         path: 'politica-de-troca',
         component: B2bPoliticasDeTrocaComponent,
+      },
+      {
+        path: 'promocao-frete-gratis',
+        component: B2bPromocaoFreteGratisComponent,
       },
       {
         path: ':id',

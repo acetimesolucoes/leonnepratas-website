@@ -3,6 +3,7 @@
     src="https://picsum.photos/id/64/400/500"
     class="card-img-top"
     alt="..."
+    routerLink="lorem-ipsum-dolor-sit-amet-consectetur-adipisicing-elit"
   />
   <div class="card-body border-top-primary">
     <!-- <h5 class="card-title">Titulo do Produto</h5> -->
@@ -11,17 +12,42 @@
     </p>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item text-primary fs-4 fw-bold">R$158,50</li>
-    <li class="list-group-item">
+    <li
+      class="list-group-item text-primary fs-4 fw-bold list-group-item-padding-none"
+    >
+      <ngb-rating [(rate)]="currentRate">
+        <ng-template let-fill="fill" let-index="index">
+          <i
+            class="bi-star{{ fill === 100 ? '-fill' : '' }}"
+            [class.filled]="fill === 100"
+            [class.low]="index < 3"
+          ></i>
+        </ng-template>
+      </ngb-rating>
+      <!-- {{ currentRate }} -->
+    </li>
+    <li
+      class="list-group-item text-primary fs-4 fw-bold list-group-item-padding-none"
+    >
+      R$158,50
+    </li>
+    <li class="list-group-item list-group-item-padding-none">
       <span class="fw-bold">3</span> x de
       <span class="fw-bold">R$25,80</span> sem juros
     </li>
   </ul>
-  <div class="card-body d-grid gap-2">
-    <button class="btn btn-primary">
-      <!-- <div class="icon icon-2 icon-fire"></div> -->
-      Comprar
-    </button>
-    <button class="btn btn-light">Espiar</button>
+  <div class="card-body">
+    <div class="d-flex justify-content-around">
+      <button class="btn btn-primary">
+        <i class="bi bi-bag-plus-fill"></i>
+        Comprar
+      </button>
+      <button
+        class="btn btn-light"
+        routerLink="lorem-ipsum-dolor-sit-amet-consectetur-adipisicing-elit"
+      >
+        <i class="bi bi-eye"></i> Espiar
+      </button>
+    </div>
   </div>
 </div>
