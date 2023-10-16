@@ -132,6 +132,23 @@ hr {
 .area-cart-item-buttons {
     display: flex;
     justify-content: space-between;
+
+    .input-change-card-item {
+        border-top: 0.09rem solid $primary;
+        border-bottom: 0.09px solid $primary;
+        text-align: center;
+        color: $primary;
+        border-left: 0px;
+        border-right: 0px;
+    }
+
+    .btn-decrease {
+        border-right: 0px;
+    }
+
+    .btn-increase {
+        border-left: 0px;
+    }
 }
 
 .btn-circled {

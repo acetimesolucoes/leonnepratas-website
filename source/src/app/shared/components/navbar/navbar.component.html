@@ -61,7 +61,18 @@
     ></button>
   </div>
   <div class="offcanvas-body">
-    <ul class="list-group list-group-cart">
+    <div
+      class="alert alert-primary"
+      role="alert"
+      *ngIf="!cart_products || cart_products.length == 0"
+    >
+      <i class="bi bi-info"></i> O carrinho de compras está vazio!
+    </div>
+
+    <ul
+      class="list-group list-group-cart"
+      *ngIf="cart_products && cart_products.length > 0"
+    >
       <li
         class="list-group-item d-flex justify-content-between align-items-start"
         *ngFor="let product of cart_products"
@@ -81,18 +92,26 @@
 
             <div class="area-cart-item-buttons">
               <div class="input-group input-change-product-quantity">
-                <button class="btn" type="button" id="button-addon1">
+                <button
+                  class="btn btn-outline-primary btn-decrease"
+                  type="button"
+                  id="button-addon1"
+                >
                   <i class="bi bi-dash"></i>
                 </button>
                 <input
                   type="text"
-                  class="form-control"
+                  class="form-control input-change-card-item"
                   placeholder=""
                   aria-label="Example text with button addon"
                   aria-describedby="button-addon1"
                   [value]="product.quantity"
                 />
-                <button class="btn" type="button" id="button-addon1">
+                <button
+                  class="btn btn-outline-primary btn-increase"
+                  type="button"
+                  id="button-addon1"
+                >
                   <i class="bi bi-plus"></i>
                 </button>
               </div>
@@ -103,11 +122,19 @@
             </div>
           </div>
         </div>
-        <button class="btn transparent"><i class="bi bi-trash"></i></button>
+        <button
+          class="btn transparent"
+          (click)="removeProductToCart(product.id)"
+        >
+          <i class="bi bi-trash"></i>
+        </button>
       </li>
     </ul>
   </div>
-  <div class="offcanvas-footer">
+  <div
+    class="offcanvas-footer"
+    *ngIf="cart_products.length > 0 && cart_products"
+  >
     <hr class="bg-primary" />
     <div class="d-flex justify-content-between pt-3 pb-3">
       <h3 class="text-primary"><strong>Total:</strong></h3>

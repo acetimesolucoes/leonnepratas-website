@@ -3,6 +3,22 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 
+class CartProduct {
+  constructor(id: string, title: string, quantity: number, price: number, picture_url: string,) {
+    this.id = id;
+    this.title = title;
+    this.quantity = quantity;
+    this.price = price;
+    this.picture_url = picture_url;
+  }
+
+  id: string;
+  title: string;
+  quantity: number;
+  price: number;
+  picture_url: string;
+}
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -14,7 +30,7 @@ export class NavbarComponent {
 
   cart_products_picture: SafeUrl[] = [];
 
-  cart_products: any = null;
+  cart_products: CartProduct[] = [];
 
   constructor(private offcanvasService: NgbOffcanvas, private sanitizer: DomSanitizer, private router: Router) {
     this.getProductsToCart();
@@ -44,6 +60,7 @@ export class NavbarComponent {
 
       this.cart_products.push(
         {
+          id: String(Math.floor(Math.random() * 999999)),
           title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
           quantity: randomQuantity,
           price: randomUnitPrice * randomQuantity,
@@ -88,5 +105,11 @@ export class NavbarComponent {
 
     this.closeCartModal();
     this.router.navigate([productUrl]);
+  }
+
+  removeProductToCart(productId: string) {
+    let index = this.cart_products.findIndex((cp => cp.id == productId));
+
+    this.cart_products.splice(index, 1);
   }
 }

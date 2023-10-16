@@ -85,6 +85,61 @@
           R$xxxx.xx</strong
         >
       </h4>
+
+      <p>Ver mais detalhes</p>
+
+      <div class="row row-cols-auto variations-group">
+        <div class="col-6 mb-3">
+          <select class="form-select" aria-label="Selecione uma cor do produto">
+            <option selected>Selecione uma cor</option>
+            <option value="1">Cor 1</option>
+            <option value="2">Cor 2</option>
+            <option value="3">Cor 3</option>
+          </select>
+        </div>
+
+        <div class="col-6 mb-3">
+          <select
+            class="form-select"
+            aria-label="Selecione o tamanho do produto"
+          >
+            <option selected>Selecione o tamanho</option>
+            <option value="1">Tamanho 1</option>
+            <option value="2">Tamanho 2</option>
+            <option value="3">Tamanho 3</option>
+          </select>
+        </div>
+
+        <div class="col-6 mb-3">
+          <div class="input-group area-cart-item-buttons">
+            <button
+              class="btn btn-outline-primary btn-decrease"
+              type="button"
+              id="button-addon1"
+            >
+              <i class="bi bi-dash"></i>
+            </button>
+            <input
+              type="text"
+              class="form-control input-change-card-item"
+              placeholder=""
+              aria-label="Example text with button addon"
+              aria-describedby="button-addon1"
+              value="0"
+            />
+            <button
+              class="btn btn-outline-primary btn-increase"
+              type="button"
+              id="button-addon1"
+            >
+              <i class="bi bi-plus"></i>
+            </button>
+          </div>
+        </div>
+        <div class="col-6 mb-3">
+          <button class="btn btn-primary" style="width: 100%">Comprar</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
