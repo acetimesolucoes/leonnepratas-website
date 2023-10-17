@@ -10,7 +10,8 @@
     "dev:ssr": "ng run leonnepratas-ecommerce:serve-ssr",
     "serve:ssr": "node dist/leonnepratas-ecommerce/server/main.js",
     "build:ssr": "ng build && ng run leonnepratas-ecommerce:server",
-    "prerender": "ng run leonnepratas-ecommerce:prerender"
+    "prerender": "ng run leonnepratas-ecommerce:prerender",
+    "deploy": "npm run build && firebase deploy"
   },
   "private": true,
   "dependencies": {

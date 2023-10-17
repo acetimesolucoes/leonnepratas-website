@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
+import { Product } from 'src/app/shared/models';
 
 @Component({
   selector: 'app-b2b-product-detail',
@@ -10,8 +11,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class B2bProductDetailComponent implements OnInit {
 
-  product: any;
+  product: Product | null = null;
   quantityProductToCart: number = 0;
+
+  shippingList: object[] = [];
+  shippingCalculating: boolean = false;
+  postalCode: string | null = null;
+  postalCodeSaved: boolean = false;
 
   form: FormGroup;
 
@@ -33,6 +39,10 @@ export class B2bProductDetailComponent implements OnInit {
       quantity: [0],
       size: [],
     });
+
+    // this.postalCode = '32412216';
+    // this.postalCodeSaved = true;
+    // this.shippingCalculate();
   }
 
   ngOnInit(): void {
@@ -42,18 +52,15 @@ export class B2bProductDetailComponent implements OnInit {
   getProduct() {
     let random_picture_id = Math.floor(Math.random() * (500 - 1)) + 1;
     let randomUnitPrice = this.getRandomFloat(280.80, 15.99, 2);
+    let product_id = String(Math.floor(Math.random() * 999999));
 
-    this.product = {
-      title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-      picture_url: `https://picsum.photos/id/${random_picture_id}/1900/1900`,
-      unit_price: randomUnitPrice,
-      categories: [
-        {
-          id: '123456',
-          title: 'aneis',
-        },
-      ]
-    };
+    this.product = new Product(
+      product_id,
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+      1,
+      randomUnitPrice,
+      `https://picsum.photos/id/${random_picture_id}/1900/1900`
+    );
   }
 
   getRandomFloat(min: number, max: number, decimals: number) {
@@ -94,5 +101,39 @@ export class B2bProductDetailComponent implements OnInit {
     } else {
       return false;
     }
+  }
+
+  shippingCalculate() {
+    if (this.validatePostalCode()) {
+      this.shippingCalculating = true;
+      this.shippingList = [];
+
+      setTimeout(() => {
+        this.shippingCalculating = false;
+        this.postalCodeSaved = true;
+        this.shippingList.push({
+          id: '1'
+        });
+
+        console.log(this.shippingList);
+
+      }, 1000);
+    }
+  }
+
+  validatePostalCode(): boolean {
+    console.log(this.postalCode);
+
+    if (this.postalCode && this.postalCode.length == 8) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  changePostalCode() {
+    this.postalCode = null;
+    this.postalCodeSaved = false;
+    this.shippingList = [];
   }
 }

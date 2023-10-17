@@ -1,4 +1,4 @@
-<div class="container pt-5 pb-5">
+<div class="container pt-5 pb-5" *ngIf="product">
   <div class="row">
     <div class="col-lg-1">
       <img
@@ -76,7 +76,7 @@
       </h1>
 
       <h3 class="mt-3 text-primary">
-        <strong>{{ product.unit_price | currency : "BRL" }}</strong>
+        <strong>{{ product.price | currency : "BRL" }}</strong>
       </h3>
 
       <h4 class="text-primary mt-3">
@@ -95,7 +95,7 @@
 
       <p>Ver mais detalhes</p>
 
-      <div class="row row-cols-auto variations-group">
+      <div class="row row-cols-auto variations-group mt-5">
         <div class="col-6 mb-3">
           <select class="form-select" aria-label="Selecione uma cor do produto">
             <option selected>Selecione uma cor</option>
@@ -150,67 +150,116 @@
         </div>
       </div>
 
-      <div class="row row-cols-auto">
-        <div class="input-group mb-3">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Digite seu CEP"
-            aria-label="Digite seu CEP"
-            aria-describedby="button-addon2"
-          />
-          <button
-            class="btn btn-outline-primary"
-            type="button"
-            id="button-addon2"
+      <div class="row row-cols-auto" *ngIf="shippingList && !postalCodeSaved">
+        <div class="col-12">
+          <div class="input-group mb-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Digite seu CEP"
+              aria-label="Digite seu CEP"
+              aria-describedby="button-addon2"
+              [(ngModel)]="postalCode"
+              [disabled]="shippingCalculating"
+            />
+            <button
+              class="btn btn-outline-primary"
+              type="button"
+              id="button-addon2"
+              (click)="shippingCalculate()"
+              [disabled]="shippingCalculating"
+            >
+              <span
+                class="spinner-border spinner-border-sm me-2"
+                aria-hidden="true"
+                *ngIf="shippingCalculating"
+              ></span>
+              <span role="status" *ngIf="shippingCalculating">
+                Calculando...</span
+              >
+              <span *ngIf="!shippingCalculating">Calcular Frete</span>
+            </button>
+          </div>
+        </div>
+        <div class="col-12">
+          <a
+            href="https://buscacepinter.correios.com.br/app/endereco/index.php"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Não sei meu cep</a
           >
-            Calcular Frete
-          </button>
         </div>
       </div>
-      <a
-        href="https://buscacepinter.correios.com.br/app/endereco/index.php"
-        target="_blank"
-        rel="noopener noreferrer"
-        >Não sei meu cep</a
+
+      <div class="container">
+        <div class="row" *ngIf="postalCodeSaved">
+          <div class="col-9">
+            <p>Entregas para o CEP: {{ postalCode }}</p>
+          </div>
+          <div class="col">
+            <button
+              class="btn btn-outline-primary"
+              (click)="changePostalCode()"
+            >
+              ALTERAR CEP
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="row row-cols-auto mt-3"
+        *ngIf="shippingList && shippingList.length > 0"
       >
+        <div class="col-12">
+          <div class="alert alert-warning" role="alert">
+            <i class="bi bi-exclamation-diamond"></i>
 
-      <div class="row row-cols-auto mt-3">
-        <div class="alert alert-warning" role="alert">
-          <i class="bi bi-exclamation-diamond"></i>
-
-          Joias personalizadas possuem o prazo de 3 dias úteis para confecção
-          mais o prazo dos Correios para chegar até o endereço.
-        </div>
-      </div>
-
-      <div class="row row-cols-auto">
-        <div class="card w-100 mb-3">
-          <div class="card-body">
-            <h5 class="card-title">Correios - PAC (via Melhor Envio)</h5>
-            <p class="card-text">Chega entre sexta 27/10 e segunda 30/10</p>
-          </div>
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="flexCheckDefault"
-            />
+            Joias personalizadas possuem o prazo de 3 dias úteis para confecção
+            mais o prazo da transportadora para chegar até o endereço.
           </div>
         </div>
-        <div class="card w-100 mb-3">
-          <div class="card-body">
-            <h5 class="card-title">Correios - SEDEX (via Melhor Envio)</h5>
-            <p class="card-text">Chega entre segunda 23/10 e terça 24/10</p>
+
+        <div class="col-12">
+          <div class="card w-100 mb-3 card-shipp-item card-shipp-item-selected">
+            <div class="row g-0">
+              <div class="col-8">
+                <div class="card-body">
+                  <h5 class="card-title">Correios - PAC (via Melhor Envio)</h5>
+                  <p class="card-text">
+                    Chega entre sexta 27/10 e segunda 30/10
+                  </p>
+                </div>
+              </div>
+              <div class="col-4">
+                <div
+                  class="d-flex align-items-center justify-content-end h-100 pe-3"
+                >
+                  <h3><strong>R$ 52.80</strong></h3>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="flexCheckDefault"
-            />
+        </div>
+        <div class="col-12">
+          <div class="card w-100 mb-3 card-shipp-item">
+            <div class="row g-0">
+              <div class="col-8">
+                <div class="card-body">
+                  <h5 class="card-title">Correios - PAC (via Melhor Envio)</h5>
+                  <p class="card-text">
+                    Chega entre sexta 27/10 e segunda 30/10
+                  </p>
+                </div>
+              </div>
+              <div class="col-4">
+                <div
+                  class="d-flex align-items-center justify-content-end h-100 pe-3"
+                >
+                  <h3><strong>R$ 52.80</strong></h3>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

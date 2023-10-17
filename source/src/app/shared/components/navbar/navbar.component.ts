@@ -2,22 +2,8 @@ import { Component, TemplateRef } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
+import { CartItem } from '../../models/cart-item';
 
-class CartProduct {
-  constructor(id: string, title: string, quantity: number, price: number, picture_url: string,) {
-    this.id = id;
-    this.title = title;
-    this.quantity = quantity;
-    this.price = price;
-    this.picture_url = picture_url;
-  }
-
-  id: string;
-  title: string;
-  quantity: number;
-  price: number;
-  picture_url: string;
-}
 
 @Component({
   selector: 'app-navbar',
@@ -30,7 +16,7 @@ export class NavbarComponent {
 
   cart_products_picture: SafeUrl[] = [];
 
-  cart_products: CartProduct[] = [];
+  cart_items: CartItem[] = [];
 
   constructor(private offcanvasService: NgbOffcanvas, private sanitizer: DomSanitizer, private router: Router) {
     this.getProductsToCart();
@@ -51,21 +37,22 @@ export class NavbarComponent {
   getProductsToCart() {
     let random = Math.floor(Math.random() * 15);
 
-    this.cart_products = [];
+    this.cart_items = [];
 
     for (let i = 0; i < random; i++) {
+      let product_id = String(Math.floor(Math.random() * 999999));
       let random_picture_id = Math.floor(Math.random() * (500 - 1)) + 1;
       let randomQuantity = Math.floor(Math.random() * (5 - 1)) + 1;
       let randomUnitPrice = this.getRandomFloat(280.80, 15.99, 2);
 
-      this.cart_products.push(
-        {
-          id: String(Math.floor(Math.random() * 999999)),
-          title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-          quantity: randomQuantity,
-          price: randomUnitPrice * randomQuantity,
-          picture_url: `https://picsum.photos/id/${random_picture_id}/75/75`,
-        }
+      this.cart_items.push(
+        new CartItem(
+          product_id,
+          'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+          randomQuantity,
+          randomUnitPrice,
+          `https://picsum.photos/id/${random_picture_id}/75/75`
+        )
       );
     }
   }
@@ -81,9 +68,9 @@ export class NavbarComponent {
   getTotalCart() {
     let total = 0;
 
-    for (let i = 0; i < this.cart_products.length; i++) {
-      const product = this.cart_products[i];
-      total += product.price
+    for (let i = 0; i < this.cart_items.length; i++) {
+      const item = this.cart_items[i];
+      total += item.unit_price
     }
 
     return total;
@@ -108,8 +95,8 @@ export class NavbarComponent {
   }
 
   removeProductToCart(productId: string) {
-    let index = this.cart_products.findIndex((cp => cp.id == productId));
+    let index = this.cart_items.findIndex((cp => cp.product_id == productId));
 
-    this.cart_products.splice(index, 1);
+    this.cart_items.splice(index, 1);
   }
 }

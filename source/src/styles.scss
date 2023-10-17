@@ -154,3 +154,18 @@ hr {
 .btn-circled {
     border-radius: 100px;
 }
+
+.card-shipp-item {
+    cursor: pointer;
+    h3 {
+        color: $primary;
+    }
+}
+
+.card-shipp-item-selected {
+    background-color: $primary;
+    color: $white !important;
+    h3 {
+        color: $white;
+    }
+}

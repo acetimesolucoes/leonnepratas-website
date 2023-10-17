@@ -35,9 +35,9 @@
         <div class="btn-icon btn-cart"></div>
         <span
           class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-light text-primary"
-          *ngIf="cart_products && cart_products.length > 0"
+          *ngIf="cart_items && cart_items.length > 0"
         >
-          {{ cart_products.length }}
+          {{ cart_items.length }}
           <span class="visually-hidden">unread messages</span>
         </span>
       </button>
@@ -64,30 +64,30 @@
     <div
       class="alert alert-primary"
       role="alert"
-      *ngIf="!cart_products || cart_products.length == 0"
+      *ngIf="!cart_items || cart_items.length == 0"
     >
       <i class="bi bi-info"></i> O carrinho de compras está vazio!
     </div>
 
     <ul
       class="list-group list-group-cart"
-      *ngIf="cart_products && cart_products.length > 0"
+      *ngIf="cart_items && cart_items.length > 0"
     >
       <li
         class="list-group-item d-flex justify-content-between align-items-start"
-        *ngFor="let product of cart_products"
+        *ngFor="let product of cart_items"
       >
         <div class="d-flex">
           <img
-            [src]="pictureUrlToSanitize(product.picture_url)"
+            [src]="pictureUrlToSanitize(product.product_picture_url)"
             class="rounded float-start"
             alt="..."
-            (click)="navigateToProductDetail(product.title)"
+            (click)="navigateToProductDetail(product.product_title)"
           />
 
           <div class="flex flex-row ps-3 pe-3">
-            <p (click)="navigateToProductDetail(product.title)">
-              {{ product.title }}
+            <p (click)="navigateToProductDetail(product.product_title)">
+              {{ product.product_title }}
             </p>
 
             <div class="area-cart-item-buttons">
@@ -117,24 +117,21 @@
               </div>
 
               <div class="d-flex align-items-center">
-                {{ product.price | currency : "BRL" }}
+                {{ product.unit_price | currency : "BRL" }}
               </div>
             </div>
           </div>
         </div>
         <button
           class="btn transparent"
-          (click)="removeProductToCart(product.id)"
+          (click)="removeProductToCart(product.product_id)"
         >
           <i class="bi bi-trash"></i>
         </button>
       </li>
     </ul>
   </div>
-  <div
-    class="offcanvas-footer"
-    *ngIf="cart_products.length > 0 && cart_products"
-  >
+  <div class="offcanvas-footer" *ngIf="cart_items.length > 0 && cart_items">
     <hr class="bg-primary" />
     <div class="d-flex justify-content-between pt-3 pb-3">
       <h3 class="text-primary"><strong>Total:</strong></h3>
