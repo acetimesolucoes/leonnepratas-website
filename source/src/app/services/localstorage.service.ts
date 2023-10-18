@@ -43,7 +43,7 @@ export class LocalstorageService {
   }
 
   getItem(key: string): string | null {
-    return this.storage.getItem(key);
+    return String(this.storage.getItem(key))?.replace('"', '\"');
   }
 
   key(index: number): string | null {

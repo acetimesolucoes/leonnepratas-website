@@ -16,7 +16,7 @@ export class CartStateService {
 
   getCart() {
     let storageCart = JSON.parse(this.localstorageService.getItem('cart') || '');
-    return new Cart(storageCart.id, storageCart.user_id, storageCart.items);
+    return new Cart(storageCart?.id, storageCart?.user_id, storageCart?.items);
   }
 
   changeCart(cart: Cart) {
