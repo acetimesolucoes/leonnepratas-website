@@ -3,6 +3,9 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { CartItem } from '../../models/cart-item';
+import { CartStateService } from 'src/app/services/cart-state.service';
+import { AppStateService } from 'src/app/services/app-state.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 
 @Component({
@@ -18,8 +21,14 @@ export class NavbarComponent {
 
   cart_items: CartItem[] = [];
 
-  constructor(private offcanvasService: NgbOffcanvas, private sanitizer: DomSanitizer, private router: Router) {
-    this.getProductsToCart();
+  constructor(
+    private offcanvasService: NgbOffcanvas,
+    private sanitizer: DomSanitizer,
+    private router: Router,
+    private cartStateService: CartStateService,
+    private toastService: ToastService,
+  ) {
+    this.getCart();
   }
 
   openCartModal(content: TemplateRef<any>) {
@@ -34,35 +43,10 @@ export class NavbarComponent {
     return this.sanitizer.bypassSecurityTrustUrl(url);
   }
 
-  getProductsToCart() {
-    let random = Math.floor(Math.random() * 15);
-
-    this.cart_items = [];
-
-    for (let i = 0; i < random; i++) {
-      let product_id = String(Math.floor(Math.random() * 999999));
-      let random_picture_id = Math.floor(Math.random() * (500 - 1)) + 1;
-      let randomQuantity = Math.floor(Math.random() * (5 - 1)) + 1;
-      let randomUnitPrice = this.getRandomFloat(280.80, 15.99, 2);
-
-      this.cart_items.push(
-        new CartItem(
-          product_id,
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-          randomQuantity,
-          randomUnitPrice,
-          `https://picsum.photos/id/${random_picture_id}/75/75`
-        )
-      );
-    }
-  }
-
-  getRandomFloat(min: number, max: number, decimals: number) {
-    const str = (Math.random() * (max - min) + min).toFixed(
-      decimals,
-    );
-
-    return parseFloat(str);
+  getCart() {
+    this.cartStateService.cartSubject.subscribe((cart) => {
+      this.cart_items = cart.items;
+    })
   }
 
   getTotalCart() {
@@ -70,7 +54,7 @@ export class NavbarComponent {
 
     for (let i = 0; i < this.cart_items.length; i++) {
       const item = this.cart_items[i];
-      total += item.unit_price
+      total += item.unit_price * item.quantity;
     }
 
     return total;
@@ -95,8 +79,25 @@ export class NavbarComponent {
   }
 
   removeProductToCart(productId: string) {
-    let index = this.cart_items.findIndex((cp => cp.product_id == productId));
+    this.cartStateService.removeItemToCart(productId);
+    this.showAlert('Produto removido do carrinho!');
+  }
 
-    this.cart_items.splice(index, 1);
+  calculateTotalPrice(quantity: number, unit_price: number) {
+    return quantity * unit_price;
+  }
+
+  decreaseCartItem(productId: string) {
+    this.cartStateService.decreaseItemToCart(productId);
+    this.showAlert('Produto removido do carrinho!');
+  }
+
+  increaseCartItem(productId: string) {
+    this.cartStateService.increaseItemToCart(productId);
+    this.showAlert('Produto adicionado ao carrinho!');
+  }
+
+  showAlert(message: string) {
+    this.toastService.show(message, { classname: 'bg-primary text-light', delay: 10000 });
   }
 }

@@ -1,10 +1,15 @@
 <div class="card text-center card-product-detail">
-  <img
+  <div
+    class="image-bg"
+    [ngStyle]="{ 'background-image': 'url(' + images[0] + ')' }"
+    routerLink="/lorem-ipsum-dolor-sit-amet-consectetur-adipisicing-elit"
+  ></div>
+  <!-- <img
     [src]="getProductSafePicture(images[0])"
     class="card-img-top"
     alt="..."
     routerLink="/lorem-ipsum-dolor-sit-amet-consectetur-adipisicing-elit"
-  />
+  /> -->
   <div class="card-body border-top-primary">
     <!-- <h5 class="card-title">Titulo do Produto</h5> -->
     <p class="card-text">
@@ -37,7 +42,7 @@
     </li>
   </ul>
   <div class="card-body">
-    <button class="btn btn-primary btn-circled">
+    <button class="btn btn-primary btn-circled" (click)="addProductToCart()">
       <i class="bi bi-bag-plus-fill"></i>
       Comprar
     </button>

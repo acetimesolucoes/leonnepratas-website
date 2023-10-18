@@ -78,12 +78,20 @@
         *ngFor="let product of cart_items"
       >
         <div class="d-flex">
-          <img
+          <div
+            class="rounded float-start image-thumbnail"
+            [ngStyle]="{
+              'background-image': 'url(' + product.product_picture_url + ')'
+            }"
+            (click)="navigateToProductDetail(product.product_title)"
+          ></div>
+
+          <!-- <img
             [src]="pictureUrlToSanitize(product.product_picture_url)"
             class="rounded float-start"
             alt="..."
             (click)="navigateToProductDetail(product.product_title)"
-          />
+          /> -->
 
           <div class="flex flex-row ps-3 pe-3">
             <p (click)="navigateToProductDetail(product.product_title)">
@@ -96,6 +104,7 @@
                   class="btn btn-outline-primary btn-decrease"
                   type="button"
                   id="button-addon1"
+                  (click)="decreaseCartItem(product.product_id)"
                 >
                   <i class="bi bi-dash"></i>
                 </button>
@@ -106,18 +115,23 @@
                   aria-label="Example text with button addon"
                   aria-describedby="button-addon1"
                   [value]="product.quantity"
+                  disabled
                 />
                 <button
                   class="btn btn-outline-primary btn-increase"
                   type="button"
                   id="button-addon1"
+                  (click)="increaseCartItem(product.product_id)"
                 >
                   <i class="bi bi-plus"></i>
                 </button>
               </div>
 
-              <div class="d-flex align-items-center">
-                {{ product.unit_price | currency : "BRL" }}
+              <div class="d-flex align-items-center text-primary">
+                {{
+                  calculateTotalPrice(product.quantity, product.unit_price)
+                    | currency : "BRL"
+                }}
               </div>
             </div>
           </div>

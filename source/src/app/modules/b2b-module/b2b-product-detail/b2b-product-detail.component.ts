@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-import { Product } from 'src/app/shared/models';
+import { Product, ProductCategory, ProductSubCategory } from 'src/app/shared/models';
 
 @Component({
   selector: 'app-b2b-product-detail',
@@ -12,6 +12,8 @@ import { Product } from 'src/app/shared/models';
 export class B2bProductDetailComponent implements OnInit {
 
   product: Product | null = null;
+  productCategories: ProductCategory[] | null = null;
+  productSubCategories: ProductSubCategory[] | null = null;
   quantityProductToCart: number = 0;
 
   shippingList: object[] = [];
@@ -47,6 +49,8 @@ export class B2bProductDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProduct();
+    this.getProductCategories();
+    this.getProductSubCategories();
   }
 
   getProduct() {
@@ -60,6 +64,51 @@ export class B2bProductDetailComponent implements OnInit {
       1,
       randomUnitPrice,
       `https://picsum.photos/id/${random_picture_id}/1900/1900`
+    );
+  }
+
+  getProductCategories() {
+    this.productCategories = [];
+
+    this.productCategories.push(
+      new ProductCategory(
+        String(Math.floor(Math.random() * 999999)),
+        'Lorem',
+        'lorem',
+      )
+    );
+    this.productCategories.push(
+      new ProductCategory(
+        String(Math.floor(Math.random() * 999999)),
+        'Ipsum',
+        'ipsum',
+      )
+    );
+    this.productCategories.push(
+      new ProductCategory(
+        String(Math.floor(Math.random() * 999999)),
+        'Dolats',
+        'dolats',
+      )
+    );
+  }
+
+  getProductSubCategories() {
+    this.productSubCategories = [];
+
+    this.productSubCategories.push(
+      new ProductSubCategory(
+        String(Math.floor(Math.random() * 999999)),
+        'Sustuns',
+        'sustuns',
+      )
+    );
+    this.productSubCategories.push(
+      new ProductSubCategory(
+        String(Math.floor(Math.random() * 999999)),
+        'Ipnets',
+        'ipnets',
+      )
     );
   }
 
