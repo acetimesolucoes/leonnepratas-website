@@ -1,5 +1,5 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Component, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
 import '@angular/localize/init';
 import { BehaviorSubject } from 'rxjs';
 import { AppStateService } from './services/app-state.service';
@@ -10,7 +10,7 @@ import { ToastService } from './services/toast.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy {
   static isBrowser = new BehaviorSubject<boolean>(false);
 
   loading: boolean = false;
@@ -23,6 +23,10 @@ export class AppComponent {
     AppComponent.isBrowser.next(isPlatformBrowser(platformId));
 
     this.getInLoading();
+  }
+
+  ngOnInit(): void {
+    this.appStateService.setOnToLoading();
   }
 
   getInLoading() {
@@ -45,5 +49,6 @@ export class AppComponent {
 
   ngOnDestroy(): void {
     this.toastService.clear();
+    this.appStateService.setOffToLoading();
   }
 }
