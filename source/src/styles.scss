@@ -180,3 +180,19 @@ hr {
         color: $white;
     }
 }
+
+.image-catalog-detail {
+    cursor: pointer;
+}
+
+.image-catalog-detail-mini {
+    background-size: cover;
+    background-position: center;
+    height: 100px;
+    width: 100%;
+    margin-bottom: 10px;
+
+    &.image-catalog-detail-mini-selected {
+        border: 2px solid $primary;
+    }
+}

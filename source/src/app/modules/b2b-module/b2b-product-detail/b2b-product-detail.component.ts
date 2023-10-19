@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
+import { AppStateService } from 'src/app/services/app-state.service';
 import { Product, ProductCategory, ProductSubCategory } from 'src/app/shared/models';
 
 @Component({
@@ -21,12 +22,16 @@ export class B2bProductDetailComponent implements OnInit {
   postalCode: string | null = null;
   postalCodeSaved: boolean = false;
 
+  openPictureBox: boolean = false;
+  picturePrincipalIndex: number = 0;
+
   form: FormGroup;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private sanitizer: DomSanitizer,
     private formBuilder: FormBuilder,
+    private appState: AppStateService,
   ) {
     activatedRoute.data.forEach(d => {
       console.log('d => ', d);
@@ -53,17 +58,30 @@ export class B2bProductDetailComponent implements OnInit {
     this.getProductSubCategories();
   }
 
-  getProduct() {
+  generateRandomPictureUrl(width: number, height: number) {
     let random_picture_id = Math.floor(Math.random() * (500 - 1)) + 1;
+
+    return `https://picsum.photos/id/${random_picture_id}/${width}/${height}`;
+  }
+
+  getProduct() {
     let randomUnitPrice = this.getRandomFloat(280.80, 15.99, 2);
     let product_id = String(Math.floor(Math.random() * 999999));
+
+    let pictures = new Array(
+      this.generateRandomPictureUrl(1900, 1900),
+      this.generateRandomPictureUrl(1900, 1900),
+      this.generateRandomPictureUrl(1900, 1900),
+      this.generateRandomPictureUrl(1900, 1900),
+    );
 
     this.product = new Product(
       product_id,
       'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
       1,
       randomUnitPrice,
-      `https://picsum.photos/id/${random_picture_id}/1900/1900`
+      this.generateRandomPictureUrl(1900, 1900),
+      pictures
     );
   }
 
@@ -184,5 +202,14 @@ export class B2bProductDetailComponent implements OnInit {
     this.postalCode = null;
     this.postalCodeSaved = false;
     this.shippingList = [];
+  }
+
+  onClickPrincipalPicture() {
+    this.openPictureBox = true;
+  }
+
+  changePictureIndexSelected(index: number) {
+    this.appState.setOnToLoading(1000);
+    this.picturePrincipalIndex = index;
   }
 }

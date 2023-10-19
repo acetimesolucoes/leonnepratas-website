@@ -1,0 +1,60 @@
+.leonne-box {
+    &.leonne-box-is-closed {
+        display: none;
+    }
+
+    &.leonne-box-is-opened {
+        display: block;
+    }
+
+    .control {
+        position: fixed;
+        z-index: 99999;
+
+        &.control-left {
+            left: 20px;
+            top: 50%;
+        }
+
+        &.control-right {
+            right: 20px;
+            top: 50%;
+        }
+
+        &.control-close {
+            right: 20px;
+            top: 20px;
+        }
+    }
+
+    .box-background {
+        opacity: 0.9;
+        transition-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+
+    .overlay {
+        background-color: rgba(22, 21, 21, 0.9);
+        transition-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+
+    .image-centered {
+        img {
+            max-height: 90vh;
+            z-index: 9999;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+}

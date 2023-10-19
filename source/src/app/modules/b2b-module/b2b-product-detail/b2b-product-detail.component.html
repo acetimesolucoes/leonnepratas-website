@@ -1,42 +1,39 @@
 <div class="container pt-5 pb-5" *ngIf="product">
   <div class="row">
     <div class="col-lg-1">
-      <img
-        [src]="pictureUrlToSanitize(product.picture_url)"
-        class="img-fluid rounded float-start pb-3"
-        alt="..."
-      />
-      <img
-        [src]="pictureUrlToSanitize(product.picture_url)"
-        class="img-fluid rounded float-start pb-3"
-        alt="..."
-      />
-      <img
-        [src]="pictureUrlToSanitize(product.picture_url)"
-        class="img-fluid rounded float-start pb-3"
-        alt="..."
-      />
-      <img
-        [src]="pictureUrlToSanitize(product.picture_url)"
-        class="img-fluid rounded float-start pb-3"
-        alt="..."
-      />
-      <img
-        [src]="pictureUrlToSanitize(product.picture_url)"
-        class="img-fluid rounded float-start pb-3"
-        alt="..."
-      />
+      <div
+        class="image-catalog-detail image-catalog-detail-mini"
+        *ngFor="let picture of product.pictures; index as index"
+        (click)="changePictureIndexSelected(index)"
+        [ngStyle]="{
+          'background-image': 'url(' + picture + ')'
+        }"
+        [ngClass]="
+          picturePrincipalIndex == index
+            ? 'image-catalog-detail-mini-selected'
+            : ''
+        "
+      >
+        <!-- <img
+          [src]="pictureUrlToSanitize(picture)"
+          class="img-fluid rounded float-start pb-3"
+          alt="..."
+        /> -->
+      </div>
     </div>
 
     <div class="col-lg-5">
       <picture>
         <source
-          [srcset]="pictureUrlToSanitize(product.picture_url)"
+          [srcset]="
+            pictureUrlToSanitize(product.pictures[picturePrincipalIndex])
+          "
           type="image/svg+xml"
         />
         <img
-          [src]="pictureUrlToSanitize(product.picture_url)"
-          class="img-fluid"
+          [src]="pictureUrlToSanitize(product.pictures[picturePrincipalIndex])"
+          class="img-fluid image-catalog-detail image-catalog-detail-principal"
+          (click)="onClickPrincipalPicture()"
           alt="..."
         />
       </picture>
@@ -265,4 +262,11 @@
       </div>
     </div>
   </div>
+  <app-zoom-picture
+    [pictures]="product.pictures"
+    [isOpened]="openPictureBox"
+    [indexSelected]="picturePrincipalIndex"
+    (openCloseChange)="openPictureBox = $event"
+    (onChangePictureSelected)="picturePrincipalIndex = $event"
+  ></app-zoom-picture>
 </div>

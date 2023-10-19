@@ -10,12 +10,12 @@ export class AppStateService {
 
   constructor() { }
 
-  setOnToLoading() {
+  setOnToLoading(time?: number) {
     this.inLoading.next(true);
 
     setTimeout(() => {
       this.setOffToLoading();
-    }, 2000);
+    }, time ? time : 2000);
   }
 
   setOffToLoading() {

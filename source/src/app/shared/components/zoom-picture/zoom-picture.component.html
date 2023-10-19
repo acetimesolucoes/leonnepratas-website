@@ -1,0 +1,33 @@
+<div class="leonne-box leonne-box-is-closed">
+  <div class="control control-left" *ngIf="picturePrincipalIndex > 0">
+    <button class="btn btn-primary" (click)="onClickLeft()">
+      <i class="bi bi-arrow-left"></i>
+    </button>
+  </div>
+
+  <div
+    class="control control-right"
+    *ngIf="picturePrincipalIndex < pictures.length - 1"
+  >
+    <button class="btn btn-primary" (click)="onClickRight()">
+      <i class="bi bi-arrow-right"></i>
+    </button>
+  </div>
+
+  <div class="control control-close">
+    <button class="btn btn-primary" (click)="closeBox()">
+      <i class="bi bi-x-lg"></i>
+    </button>
+  </div>
+
+  <div class="overlay" (click)="closeBox()"></div>
+
+  <div class="image-centered">
+    <img
+      class="img-fluid"
+      [src]="pictures[picturePrincipalIndex]"
+      alt=""
+      srcset=""
+    />
+  </div>
+</div>

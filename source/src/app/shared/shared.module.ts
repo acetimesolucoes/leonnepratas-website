@@ -15,6 +15,7 @@ import { B2bProductCardComponent } from './components/b2b-product-card/b2b-produ
 import { CartStateService } from '../services/cart-state.service';
 import { LoadingOverlayComponent } from './components/loading-overlay/loading-overlay.component';
 import { ToastContainerComponent } from './components/toast-container/toast-container.component';
+import { ZoomPictureComponent } from './components/zoom-picture/zoom-picture.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ToastContainerComponent } from './components/toast-container/toast-cont
     B2bProductCardComponent,
     LoadingOverlayComponent,
     ToastContainerComponent,
+    ZoomPictureComponent,
   ],
   imports: [
     CommonModule,
@@ -52,6 +54,7 @@ import { ToastContainerComponent } from './components/toast-container/toast-cont
     B2bProductCardComponent,
     LoadingOverlayComponent,
     ToastContainerComponent,
+    ZoomPictureComponent,
   ],
   providers: [
     NgbCarouselConfig,
