@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { AppStateService } from 'src/app/services/app-state.service';
+import { UserStateService } from 'src/app/services/user-state.service';
 import { Product, ProductCategory, ProductSubCategory } from 'src/app/shared/models';
 
 @Component({
@@ -21,6 +22,7 @@ export class B2bProductDetailComponent implements OnInit {
   shippingCalculating: boolean = false;
   postalCode: string | null = null;
   postalCodeSaved: boolean = false;
+  changingPostalCode: boolean = false;
 
   openPictureBox: boolean = false;
   picturePrincipalIndex: number = 0;
@@ -32,6 +34,7 @@ export class B2bProductDetailComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private formBuilder: FormBuilder,
     private appState: AppStateService,
+    private userState: UserStateService,
   ) {
     activatedRoute.data.forEach(d => {
       console.log('d => ', d);
@@ -56,6 +59,7 @@ export class B2bProductDetailComponent implements OnInit {
     this.getProduct();
     this.getProductCategories();
     this.getProductSubCategories();
+    this.getUserPostalCode();
   }
 
   generateRandomPictureUrl(width: number, height: number) {
@@ -189,11 +193,13 @@ export class B2bProductDetailComponent implements OnInit {
   }
 
   validatePostalCode(): boolean {
-    console.log(this.postalCode);
-
     if (this.postalCode && this.postalCode.length == 8) {
       return true;
-    } else {
+    } else if (this.postalCode && this.postalCode.length == 8 && this.changingPostalCode) {
+      this.userState.setUserPostalCode(this.postalCode);
+      return true;
+    }
+    else {
       return false;
     }
   }
@@ -201,6 +207,7 @@ export class B2bProductDetailComponent implements OnInit {
   changePostalCode() {
     this.postalCode = null;
     this.postalCodeSaved = false;
+    this.changingPostalCode = true;
     this.shippingList = [];
   }
 
@@ -211,5 +218,15 @@ export class B2bProductDetailComponent implements OnInit {
   changePictureIndexSelected(index: number) {
     this.appState.setOnToLoading(1000);
     this.picturePrincipalIndex = index;
+  }
+
+  getUserPostalCode() {
+    this.userState.userPostalCode.subscribe(postalCode => {
+      if (postalCode && postalCode != null && postalCode != 'null') {
+        this.postalCode = postalCode;
+        this.postalCodeSaved = true;
+        this.shippingCalculate();
+      }
+    });
   }
 }
