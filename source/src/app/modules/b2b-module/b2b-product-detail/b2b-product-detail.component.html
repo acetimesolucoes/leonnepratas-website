@@ -130,7 +130,7 @@
               placeholder=""
               aria-label="Example text with button addon"
               aria-describedby="button-addon1"
-              [value]="quantityProductToCart"
+              [(ngModel)]="quantityProductToCart"
             />
             <button
               class="btn btn-outline-primary btn-increase"
@@ -143,7 +143,9 @@
           </div>
         </div>
         <div class="col-6 mb-3">
-          <button class="btn btn-primary" style="width: 100%">Comprar</button>
+          <button class="btn btn-primary w-100" (click)="onBuyClick()">
+            Comprar
+          </button>
         </div>
       </div>
 
@@ -217,14 +219,22 @@
           </div>
         </div>
 
-        <div class="col-12">
-          <div class="card w-100 mb-3 card-shipp-item card-shipp-item-selected">
+        <div class="col-12" *ngFor="let shipp of shippingList">
+          <div
+            class="card w-100 mb-3 card-shipp-item"
+            [ngClass]="
+              userShippSelected?.id == shipp.id
+                ? 'card-shipp-item-selected'
+                : ''
+            "
+            (click)="onUserSelectShipp(shipp.id)"
+          >
             <div class="row g-0">
               <div class="col-8">
                 <div class="card-body">
-                  <h5 class="card-title">Correios - PAC (via Melhor Envio)</h5>
+                  <h5 class="card-title">{{ shipp.companyLabel }}</h5>
                   <p class="card-text">
-                    Chega entre sexta 27/10 e segunda 30/10
+                    {{ shipp.deadlineLabel }}
                   </p>
                 </div>
               </div>
@@ -232,28 +242,9 @@
                 <div
                   class="d-flex align-items-center justify-content-end h-100 pe-3"
                 >
-                  <h3><strong>R$ 52.80</strong></h3>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-12">
-          <div class="card w-100 mb-3 card-shipp-item">
-            <div class="row g-0">
-              <div class="col-8">
-                <div class="card-body">
-                  <h5 class="card-title">Correios - PAC (via Melhor Envio)</h5>
-                  <p class="card-text">
-                    Chega entre sexta 27/10 e segunda 30/10
-                  </p>
-                </div>
-              </div>
-              <div class="col-4">
-                <div
-                  class="d-flex align-items-center justify-content-end h-100 pe-3"
-                >
-                  <h3><strong>R$ 52.80</strong></h3>
+                  <h3>
+                    <strong>{{ shipp.amount | currency : "BRL" }}</strong>
+                  </h3>
                 </div>
               </div>
             </div>

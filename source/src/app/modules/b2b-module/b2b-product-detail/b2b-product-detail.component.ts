@@ -16,13 +16,15 @@ export class B2bProductDetailComponent implements OnInit {
   product: Product | null = null;
   productCategories: ProductCategory[] | null = null;
   productSubCategories: ProductSubCategory[] | null = null;
-  quantityProductToCart: number = 0;
+  quantityProductToCart: number = 1;
 
-  shippingList: object[] = [];
+  shippingList: any[] = [];
   shippingCalculating: boolean = false;
   postalCode: string | null = null;
   postalCodeSaved: boolean = false;
   changingPostalCode: boolean = false;
+
+  userShippSelected: any = {};
 
   openPictureBox: boolean = false;
   picturePrincipalIndex: number = 0;
@@ -159,7 +161,7 @@ export class B2bProductDetailComponent implements OnInit {
   }
 
   getMinQuantityProductToDecrease() {
-    if (this.quantityProductToCart > 0) {
+    if (this.quantityProductToCart > 1) {
       return true;
     } else {
       return false;
@@ -183,7 +185,18 @@ export class B2bProductDetailComponent implements OnInit {
         this.shippingCalculating = false;
         this.postalCodeSaved = true;
         this.shippingList.push({
-          id: '1'
+          id: '1226588613559',
+          amount: 15.80,
+          company: 'Correios',
+          companyLabel: 'Correios - PAC (via Melhor Envio)',
+          deadlineLabel: 'Chega entre sexta 27/10 e segunda 30/10',
+        });
+        this.shippingList.push({
+          id: '56335546488656',
+          amount: 15.80,
+          company: 'Jadlog',
+          companyLabel: 'Jadlog',
+          deadlineLabel: 'Chega entre sexta 27/10 e segunda 30/10',
         });
 
         console.log(this.shippingList);
@@ -228,5 +241,16 @@ export class B2bProductDetailComponent implements OnInit {
         this.shippingCalculate();
       }
     });
+  }
+
+  onUserSelectShipp(shippId: string) {
+    this.userShippSelected['id'] = shippId;
+  }
+
+  onBuyClick() {
+    if (this.quantityProductToCart > 0) {
+      this.appState.setOnToLoading(3000);
+
+    }
   }
 }

@@ -16,6 +16,8 @@ import { CartStateService } from '../services/cart-state.service';
 import { LoadingOverlayComponent } from './components/loading-overlay/loading-overlay.component';
 import { ToastContainerComponent } from './components/toast-container/toast-container.component';
 import { ZoomPictureComponent } from './components/zoom-picture/zoom-picture.component';
+import { NavbarCartComponent } from './components/navbar-cart/navbar-cart.component';
+import { FooterCartComponent } from './components/footer-cart/footer-cart.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { ZoomPictureComponent } from './components/zoom-picture/zoom-picture.com
     LoadingOverlayComponent,
     ToastContainerComponent,
     ZoomPictureComponent,
+    NavbarCartComponent,
+    FooterCartComponent,
   ],
   imports: [
     CommonModule,
@@ -55,6 +59,8 @@ import { ZoomPictureComponent } from './components/zoom-picture/zoom-picture.com
     LoadingOverlayComponent,
     ToastContainerComponent,
     ZoomPictureComponent,
+    NavbarCartComponent,
+    FooterCartComponent,
   ],
   providers: [
     NgbCarouselConfig,

@@ -86,13 +86,6 @@
             (click)="navigateToProductDetail(product.product_title)"
           ></div>
 
-          <!-- <img
-            [src]="pictureUrlToSanitize(product.product_picture_url)"
-            class="rounded float-start"
-            alt="..."
-            (click)="navigateToProductDetail(product.product_title)"
-          /> -->
-
           <div class="flex flex-row ps-3 pe-3">
             <p (click)="navigateToProductDetail(product.product_title)">
               {{ product.product_title }}
@@ -161,7 +154,7 @@
       </div>
     </div>
     <div class="d-grid gap-2">
-      <button class="btn btn-primary" type="button">
+      <button class="btn btn-primary" type="button" (click)="onBuyClick()">
         <span class="text-upper">Finalizar Compra</span>
       </button>
       <button

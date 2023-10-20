@@ -196,3 +196,83 @@ hr {
         border: 2px solid $primary;
     }
 }
+
+.navbar {
+    z-index: 2;
+}
+
+.logomarca {
+    width: 200px;
+    height: 30px;
+    background-image: url("./assets/logomarca-branca.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.image-thumbnail {
+    width: 117px;
+    height: 102px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.btn-icon {
+    width: 25px;
+    height: 25px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.btn-cart {
+    background-image: url("./assets/bag-cart.svg");
+}
+
+.btn-profile {
+    background-image: url("./assets/user.svg");
+}
+
+.btn-search {
+    background-image: url("./assets/search.png");
+}
+
+.footer {
+    color: white;
+    width: 100%;
+    margin: 0px;
+
+    a {
+        color: white;
+    }
+    a:hover {
+        text-decoration-line: underline;
+        text-decoration-color: white;
+    }
+}
+
+.payment-method img {
+    width: 50px;
+    height: auto;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.list-group-resumo-cart {
+    &.list-group {
+        .list-group-item {
+            background-color: $primary;
+            color: $white;
+            border: none;
+        }
+    }
+}
+
+.c-pointer {
+    cursor: pointer;
+}

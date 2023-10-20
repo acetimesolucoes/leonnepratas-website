@@ -27,6 +27,7 @@ export class NavbarComponent {
     private router: Router,
     private cartStateService: CartStateService,
     private toastService: ToastService,
+    private appState: AppStateService,
   ) {
     this.getCart();
   }
@@ -99,5 +100,12 @@ export class NavbarComponent {
 
   showAlert(message: string) {
     this.toastService.show(message, { classname: 'bg-primary text-light', delay: 10000 });
+  }
+
+  onBuyClick() {
+    this.appState.setOnToLoading(3000);
+    this.closeCartModal();
+
+    this.router.navigate(['checkout']);
   }
 }
