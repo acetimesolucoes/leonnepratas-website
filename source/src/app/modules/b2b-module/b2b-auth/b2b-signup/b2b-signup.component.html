@@ -1,0 +1,397 @@
+<div class="card combo-signin col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+  <div class="card-header">
+    <h3 class="text-primary">Criar uma conta</h3>
+  </div>
+  <div class="card-body">
+    <div class="container" [formGroup]="form">
+      <div class="col-12">
+        <div class="form-floating mb-3">
+          <select
+            class="form-select"
+            aria-label="Default select example"
+            formControlName="registrationType"
+          >
+            <option value="fisical">Pessoa Física</option>
+            <option value="legal">Pessoa Jurídica</option>
+          </select>
+          <label for="floatingInput">Tipo de cadastro</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div
+          class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6"
+          *ngIf="!isCompanyRegistration()"
+        >
+          <div class="form-floating mb-3 has-validation">
+            <input
+              type="text"
+              class="form-control"
+              id="floatingInput"
+              placeholder=""
+              formControlName="firstName"
+              [ngClass]="
+                form.controls['firstName'].touched &&
+                form.controls['firstName'].valid
+                  ? 'is-valid'
+                  : form.controls['firstName'].touched &&
+                    form.controls['firstName'].invalid
+                  ? 'is-invalid'
+                  : ''
+              "
+            />
+            <label for="floatingInput">Nome</label>
+            <!-- <div
+              class="text-start"
+              *ngIf="
+                form.controls['firstName'].touched &&
+                form.controls['firstName'].invalid
+              "
+              [ngClass]="
+                form.controls['firstName'].touched &&
+                form.controls['firstName'].invalid
+                  ? 'invalid-feedback'
+                  : ''
+              "
+            >
+              Esse campo é obrigatório
+            </div> -->
+          </div>
+        </div>
+
+        <div
+          class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6"
+          *ngIf="!isCompanyRegistration()"
+        >
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="floatingInput"
+              placeholder=""
+              formControlName="lastName"
+              [ngClass]="
+                form.controls['lastName'].touched &&
+                form.controls['lastName'].valid
+                  ? 'is-valid'
+                  : form.controls['lastName'].touched &&
+                    form.controls['lastName'].invalid
+                  ? 'is-invalid'
+                  : ''
+              "
+            />
+            <label for="floatingInput">Sobrenome</label>
+          </div>
+        </div>
+
+        <div
+          class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12"
+          *ngIf="isCompanyRegistration()"
+        >
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="floatingInput"
+              placeholder=""
+              formControlName="companyName"
+              [ngClass]="
+                form.controls['companyName'].touched &&
+                form.controls['companyName'].valid
+                  ? 'is-valid'
+                  : form.controls['companyName'].touched &&
+                    form.controls['companyName'].invalid
+                  ? 'is-invalid'
+                  : ''
+              "
+            />
+            <label for="floatingInput">Razão Social</label>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="floatingInput"
+              placeholder=""
+              formControlName="phoneNumber1"
+              [ngClass]="
+                form.controls['phoneNumber1'].touched &&
+                form.controls['phoneNumber1'].valid
+                  ? 'is-valid'
+                  : form.controls['phoneNumber1'].touched &&
+                    form.controls['phoneNumber1'].invalid
+                  ? 'is-invalid'
+                  : ''
+              "
+            />
+            <label for="floatingInput">Telefone 1</label>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="floatingInput"
+              placeholder=""
+              formControlName="phoneNumber2"
+              [ngClass]="
+                form.controls['phoneNumber2'].touched &&
+                form.controls['phoneNumber2'].valid
+                  ? 'is-valid'
+                  : form.controls['phoneNumber2'].touched &&
+                    form.controls['phoneNumber2'].invalid
+                  ? 'is-invalid'
+                  : ''
+              "
+            />
+            <label for="floatingInput">Telefone 2</label>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="floatingInput"
+              placeholder=""
+              formControlName="legalIdentify"
+              [ngClass]="
+                form.controls['legalIdentify'].touched &&
+                form.controls['legalIdentify'].valid
+                  ? 'is-valid'
+                  : form.controls['legalIdentify'].touched &&
+                    form.controls['legalIdentify'].invalid
+                  ? 'is-invalid'
+                  : ''
+              "
+            />
+            <label for="floatingInput" *ngIf="!isCompanyRegistration()"
+              >CPF</label
+            >
+            <label for="floatingInput" *ngIf="isCompanyRegistration()"
+              >CNPJ</label
+            >
+          </div>
+        </div>
+
+        <div
+          class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6"
+          *ngIf="isCompanyRegistration()"
+        >
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="floatingInput"
+              placeholder=""
+              formControlName="stateRegistration"
+              [ngClass]="
+                form.controls['stateRegistration'].touched &&
+                form.controls['stateRegistration'].valid
+                  ? 'is-valid'
+                  : form.controls['stateRegistration'].touched &&
+                    form.controls['stateRegistration'].invalid
+                  ? 'is-invalid'
+                  : ''
+              "
+            />
+            <label for="floatingInput">Inscrição Estadual</label>
+          </div>
+        </div>
+
+        <div
+          class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6"
+          *ngIf="!isCompanyRegistration()"
+        >
+          <div class="form-floating mb-3">
+            <input
+              type="date"
+              class="form-control"
+              id="floatingInput"
+              placeholder=""
+              formControlName="birth"
+              [ngClass]="
+                form.controls['birth'].touched && form.controls['birth'].valid
+                  ? 'is-valid'
+                  : form.controls['birth'].touched &&
+                    form.controls['birth'].invalid
+                  ? 'is-invalid'
+                  : ''
+              "
+            />
+            <label for="floatingInput">Data de nascimento</label>
+          </div>
+        </div>
+
+        <div
+          class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12"
+          *ngIf="!isCompanyRegistration()"
+        >
+          <div class="form-floating mb-3">
+            <select
+              class="form-select"
+              aria-label="Default select example"
+              formControlName="gender"
+            >
+              <option value="female">Feminino</option>
+              <option value="male">Masculino</option>
+              <option value="lgbtqi">LGBTQI+</option>
+              <option value="others">Outros</option>
+              <option value="uninformed">Prefiro não falar</option>
+            </select>
+            <label for="floatingInput">Gênero</label>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="floatingInput"
+              placeholder=""
+              formControlName="email"
+              [ngClass]="
+                form.controls['email'].touched && form.controls['email'].valid
+                  ? 'is-valid'
+                  : form.controls['email'].touched &&
+                    form.controls['email'].invalid
+                  ? 'is-invalid'
+                  : ''
+              "
+            />
+            <label for="floatingInput">E-mail</label>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="floatingInput"
+              placeholder=""
+              formControlName="emailConfirmation"
+              [ngClass]="
+                form.controls['emailConfirmation'].touched &&
+                form.controls['emailConfirmation'].valid
+                  ? 'is-valid'
+                  : form.controls['emailConfirmation'].touched &&
+                    form.controls['emailConfirmation'].invalid
+                  ? 'is-invalid'
+                  : ''
+              "
+            />
+            <label for="floatingInput">Confirme eu e-mail</label>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
+          <div class="form-floating mb-3">
+            <input
+              type="password"
+              class="form-control"
+              id="floatingInput"
+              placeholder=""
+              formControlName="password"
+              [ngClass]="
+                form.controls['password'].touched &&
+                form.controls['password'].valid
+                  ? 'is-valid'
+                  : form.controls['password'].touched &&
+                    form.controls['password'].invalid
+                  ? 'is-invalid'
+                  : ''
+              "
+            />
+            <label for="floatingInput">Senha</label>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
+          <div class="form-floating mb-3">
+            <input
+              type="password"
+              class="form-control"
+              id="floatingInput"
+              placeholder=""
+              formControlName="passwordConfirmation"
+              [ngClass]="
+                form.controls['passwordConfirmation'].touched &&
+                form.controls['passwordConfirmation'].valid
+                  ? 'is-valid'
+                  : form.controls['passwordConfirmation'].touched &&
+                    form.controls['passwordConfirmation'].invalid
+                  ? 'is-invalid'
+                  : ''
+              "
+            />
+            <label for="floatingInput">Confirme sua senha</label>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+          <div class="form-check text-start">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="flexCheckDefault"
+              formControlName="agreementPrivacyPolice"
+              [ngClass]="
+                form.controls['agreementPrivacyPolice'].touched &&
+                form.controls['agreementPrivacyPolice'].invalid
+                  ? 'is-invalid'
+                  : ''
+              "
+            />
+            <label class="form-check-label" for="flexCheckDefault">
+              Concordo com a
+              <a target="_blank" routerLink="/politica-de-privacidade"
+                >política de privacidade</a
+              >.
+            </label>
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+          <div class="form-check text-start">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="flexCheckChecked"
+              formControlName="agreementReceiptEmailMarketing"
+            />
+            <label class="form-check-label" for="flexCheckChecked">
+              Concordo em receber informativos sobre ofertas e novidades.
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-footer">
+    <div class="d-grid gap-2 ps-3 pe-3">
+      <button
+        class="btn btn-primary"
+        (click)="onRegisterClick()"
+        [disabled]="!isFormValid()"
+      >
+        Cadastrar
+      </button>
+      <button class="btn btn-outline-primary" (click)="doSignIn()">
+        Já tem uma conta? Logar-se
+      </button>
+      <button class="btn btn-link" (click)="goBack()">
+        Voltar para o site
+      </button>
+    </div>
+  </div>
+</div>

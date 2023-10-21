@@ -12,6 +12,11 @@ import { B2bCategoryComponent } from './b2b-category/b2b-category.component';
 
 const routes: Routes = [
   {
+    path: 'auth',
+    pathMatch: 'prefix',
+    loadChildren: () => import('./b2b-auth/b2b-auth.module').then(m => m.B2bAuthModule)
+  },
+  {
     path: 'checkout',
     pathMatch: 'prefix',
     loadChildren: () => import('./b2b-cart/b2b-cart.module').then(m => m.B2bCartModule)

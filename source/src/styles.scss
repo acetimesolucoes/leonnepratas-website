@@ -204,11 +204,43 @@ hr {
 .logomarca {
     width: 200px;
     height: 30px;
-    background-image: url("./assets/logomarca-branca.png");
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
     cursor: pointer;
+
+    &.logomarca-light {
+        background-image: url("./assets/logomarca-branca.png");
+    }
+
+    &.logomarca-primary {
+        background-image: url("./assets/logomarca.png");
+    }
+}
+
+.image-escudo {
+    // background-image: url(./assets/payment/escudo.png);
+    // background-position: center;
+    // background-size: cover;
+    // background-repeat: no-repeat;
+    // width: 150px;
+    img {
+        max-height: 50px;
+    }
+
+    .campo-text-site-seguro {
+        padding-left: 10px;
+        padding-right: 10px;
+
+        .title {
+            margin: 0px;
+            padding: 0px;
+        }
+        .sub-title {
+            margin: 0px;
+            padding: 0px;
+        }
+    }
 }
 
 .image-thumbnail {
@@ -273,6 +305,44 @@ hr {
     }
 }
 
+.card-cart-header-detail {
+    h4 {
+        margin-bottom: 0px;
+    }
+
+    p {
+        margin-bottom: 0px;
+    }
+}
+
 .c-pointer {
     cursor: pointer;
+}
+
+.bg-auth {
+    background-color: $primary;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+
+    .combo-signin {
+        margin: auto;
+        padding: 30px;
+
+        .logomarca {
+            height: 100px;
+            margin: auto;
+        }
+
+        .card-header {
+            border: none;
+            background-color: $white;
+        }
+
+        .card-footer {
+            border: none;
+            background-color: $white;
+            margin-bottom: 15px;
+        }
+    }
 }

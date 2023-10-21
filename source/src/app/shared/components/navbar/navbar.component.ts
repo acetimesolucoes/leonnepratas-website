@@ -108,4 +108,8 @@ export class NavbarComponent {
 
     this.router.navigate(['checkout']);
   }
+
+  onClickProfile() {
+    this.router.navigate(['auth']);
+  }
 }

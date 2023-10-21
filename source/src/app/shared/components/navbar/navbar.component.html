@@ -4,7 +4,7 @@
       class="col-auto col-sm-auto col-md-auto col-lg-auto col-xl-auto col-xxl-auto"
       routerLink="/"
     >
-      <div class="logomarca"></div>
+      <div class="logomarca logomarca-light"></div>
     </div>
 
     <!-- <div class="input-group">
@@ -41,7 +41,11 @@
           <span class="visually-hidden">unread messages</span>
         </span>
       </button>
-      <button class="btn bg-transparent" type="button">
+      <button
+        class="btn bg-transparent"
+        type="button"
+        (click)="onClickProfile()"
+      >
         <div class="btn-icon btn-profile"></div>
       </button>
     </div>
