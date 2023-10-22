@@ -16,7 +16,6 @@ import { B2bPromocaoFreteGratisComponent } from './b2b-promocao-frete-gratis/b2b
 import { B2bCategoryComponent } from './b2b-category/b2b-category.component';
 import { FormsModule } from '@angular/forms';
 
-
 @NgModule({
   declarations: [
     B2bHomeComponent,

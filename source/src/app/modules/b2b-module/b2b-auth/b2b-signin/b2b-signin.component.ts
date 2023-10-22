@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AppStateService } from 'src/app/services/app-state.service';
 
@@ -8,12 +9,24 @@ import { AppStateService } from 'src/app/services/app-state.service';
   styleUrls: ['./b2b-signin.component.scss']
 })
 export class B2bSigninComponent {
-  constructor(private appState: AppStateService, private router: Router,) {
 
+  form: FormGroup;
+
+  constructor(
+    private appState: AppStateService,
+    private router: Router,
+    private formBuilder: FormBuilder,
+  ) {
+    this.form = this.formBuilder.group({
+      email: [null, [Validators.required, Validators.email]],
+      password: [null, Validators.required]
+    });
   }
 
   doSignIn() {
-    this.appState.setOnToLoading();
+    this.appState.setOnToLoading(3000);
+
+    this.router.navigate(['dashboard']);
   }
 
   doSignUp() {

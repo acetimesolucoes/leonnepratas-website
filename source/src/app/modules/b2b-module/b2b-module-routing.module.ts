@@ -17,6 +17,11 @@ const routes: Routes = [
     loadChildren: () => import('./b2b-auth/b2b-auth.module').then(m => m.B2bAuthModule)
   },
   {
+    path: 'dashboard',
+    pathMatch: 'prefix',
+    loadChildren: () => import('./b2b-dashboard/b2b-dashboard.module').then(m => m.B2bDashboardModule)
+  },
+  {
     path: 'checkout',
     pathMatch: 'prefix',
     loadChildren: () => import('./b2b-cart/b2b-cart.module').then(m => m.B2bCartModule)
