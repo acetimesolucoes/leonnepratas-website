@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row pt-5 pb-5">
+    <div class="col-12 mb-3">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+          <li
+            class="breadcrumb-item"
+            aria-current="page"
+            *ngFor="let breadcrumb of breadcrumbs"
+            [ngClass]="breadcrumbs.isActualPath ? 'active' : ''"
+          >
+            <a
+              [href]="breadcrumb.path"
+              *ngIf="!breadcrumb.isActualPath"
+              class="text-capitalize"
+              >{{ breadcrumb.path }}</a
+            >
+            <span *ngIf="breadcrumb.isActualPath" class="text-capitalize">{{
+              breadcrumb.path
+            }}</span>
+          </li>
+        </ol>
+      </nav>
+    </div>
+
+    <app-customer-product-card
+      class="col-12 col-md-6 col-lg-3 col-xl-3 pb-4"
+    ></app-customer-product-card>
+
+    <app-customer-product-card
+      class="col-12 col-md-6 col-lg-3 col-xl-3 pb-4"
+    ></app-customer-product-card>
+
+    <app-customer-product-card
+      class="col-12 col-md-6 col-lg-3 col-xl-3 pb-4"
+    ></app-customer-product-card>
+
+    <app-customer-product-card
+      class="col-12 col-md-6 col-lg-3 col-xl-3 pb-4"
+    ></app-customer-product-card>
+
+    <app-customer-product-card
+      class="col-12 col-md-6 col-lg-3 col-xl-3 pb-4"
+    ></app-customer-product-card>
+
+    <app-customer-product-card
+      class="col-12 col-md-6 col-lg-3 col-xl-3 pb-4"
+    ></app-customer-product-card>
+
+    <app-customer-product-card
+      class="col-12 col-md-6 col-lg-3 col-xl-3 pb-4"
+    ></app-customer-product-card>
+
+    <app-customer-product-card
+      class="col-12 col-md-6 col-lg-3 col-xl-3 pb-4"
+    ></app-customer-product-card>
+  </div>
+</div>

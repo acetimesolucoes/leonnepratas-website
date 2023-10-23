@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { B2bModuleModule } from './modules/b2b-module/b2b-module.module';
+import { CustomerModuleModule } from './modules/customer-module/customer-module.module';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'prefix',
-    loadChildren: () => import('./modules/b2b-module/b2b-module-routing.module').then(mod => mod.B2bModuleRoutingModule)
+    loadChildren: () => import('./modules/customer-module/customer-module-routing.module').then(mod => mod.CustomerModuleRoutingModule)
   },
 ];
 
