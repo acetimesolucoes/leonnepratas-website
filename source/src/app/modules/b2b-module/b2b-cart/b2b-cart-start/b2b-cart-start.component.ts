@@ -51,6 +51,7 @@ export class B2bCartStartComponent {
 
   getCart() {
     this.cartState.cartSubject.subscribe(c => {
+      this.appState.setOnToLoading(2000);
       this.cart = c;
     });
   }

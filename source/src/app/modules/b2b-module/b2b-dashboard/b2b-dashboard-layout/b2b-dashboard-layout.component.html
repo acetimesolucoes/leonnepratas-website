@@ -1,3 +1,49 @@
 <app-navbar-dashboard></app-navbar-dashboard>
 
-<router-outlet></router-outlet>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-3 col-xxl-3">
+      <div class="card w-100 mt-5 bg-primary text-light">
+        <ul class="list-group list-group-flush list-group-no-borded">
+          <li class="list-group-item">
+            <div
+              class="area-picture-profile h-100 d-flex align-items-center justify-content-center m-auto"
+            >
+              <div class="picture-profile mt-3">BL</div>
+            </div>
+            <div class="profile-data pt-3 ps-3 pe-3 text-center">
+              <h4>Nome Sobrenome</h4>
+              <!-- <span class="c-pointer" (click)="doSignOut()">Sair da conta</span> -->
+            </div>
+          </li>
+          <li class="list-group-item c-pointer" routerLink="account">
+            <h4 class="d-flex justify-content-start">
+              <i class="bi bi-person-circle ms-4 me-4"></i>
+              <span>Minha conta</span>
+            </h4>
+          </li>
+          <li class="list-group-item c-pointer" routerLink="purchases">
+            <h4 class="d-flex justify-content-start">
+              <i class="bi bi-bag-fill ms-4 me-4"></i> <span>Meus pedidos</span>
+            </h4>
+          </li>
+          <li class="list-group-item c-pointer" routerLink="/checkout">
+            <h4 class="d-flex justify-content-start">
+              <i class="bi bi-basket ms-4 me-4"></i> <span>Carrinho</span>
+            </h4>
+          </li>
+          <li class="list-group-item c-pointer" (click)="goBackToSite()">
+            <h4 class="d-flex justify-content-start">
+              <i class="bi bi-arrow-bar-left ms-4 me-4"></i>
+              <span>Voltar para a loja</span>
+            </h4>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-9 col-xxl-9">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

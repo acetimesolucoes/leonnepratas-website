@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { B2bDashboardLayoutComponent } from './b2b-dashboard-layout/b2b-dashboard-layout.component';
 import { B2bAccountComponent } from './b2b-account/b2b-account.component';
+import { B2bPurchasesComponent } from './b2b-purchases/b2b-purchases.component';
 
 const routes: Routes = [
   {
@@ -11,11 +12,16 @@ const routes: Routes = [
     children: [
       {
         path: '',
+        pathMatch: 'prefix',
         redirectTo: 'account'
       },
       {
         path: 'account',
         component: B2bAccountComponent
+      },
+      {
+        path: 'purchases',
+        component: B2bPurchasesComponent
       }
     ]
   }
