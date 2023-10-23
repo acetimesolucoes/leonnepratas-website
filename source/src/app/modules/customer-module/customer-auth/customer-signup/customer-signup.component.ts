@@ -69,8 +69,6 @@ export class CustomerSignupComponent {
 
   onRegisterClick() {
     this.appState.setOnToLoading();
-
-    console.log(this.form);
   }
 
   doSignIn() {

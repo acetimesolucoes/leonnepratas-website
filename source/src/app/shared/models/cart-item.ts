@@ -5,13 +5,14 @@ export class CartItem {
         quantity: number,
         unit_price: number,
         product_picture_url: string,
+        url: string,
     ) {
         this.product_id = product_id;
         this.product_title = product_title;
         this.quantity = quantity;
         this.unit_price = unit_price;
         this.product_picture_url = product_picture_url;
-
+        this.url = url;
         this.total_price = this.getTotalPrice;
     }
 
@@ -21,6 +22,7 @@ export class CartItem {
     unit_price: number;
     total_price: Function;
     product_picture_url: string;
+    url: string;
 
     getTotalPrice = () => {
         return this.unit_price * this.quantity;

@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AppStateService } from 'src/app/services/app-state.service';
 import { UserStateService } from 'src/app/services/user-state.service';
 import { Product, ProductCategory, ProductSubCategory } from 'src/app/shared/models';
+import { MathUtils } from 'src/app/utils';
 
 @Component({
   selector: 'app-customer-product-detail',
@@ -38,14 +39,6 @@ export class CustomerProductDetailComponent implements OnInit {
     private appState: AppStateService,
     private userState: UserStateService,
   ) {
-    activatedRoute.data.forEach(d => {
-      console.log('d => ', d);
-    });
-
-    activatedRoute.queryParamMap.forEach(p => {
-      console.log('p => ', p);
-    });
-
     this.form = this.formBuilder.group({
       color: [],
       quantity: [0],
@@ -71,7 +64,7 @@ export class CustomerProductDetailComponent implements OnInit {
   }
 
   getProduct() {
-    let randomUnitPrice = this.getRandomFloat(280.80, 15.99, 2);
+    let randomUnitPrice = MathUtils.getRandomFloat(280.80, 15.99, 2);
     let product_id = String(Math.floor(Math.random() * 999999));
 
     let pictures = new Array(
@@ -86,8 +79,8 @@ export class CustomerProductDetailComponent implements OnInit {
       'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
       1,
       randomUnitPrice,
-      this.generateRandomPictureUrl(1900, 1900),
-      pictures
+      pictures,
+      'lorem-ipsum-dolor-sit-amet-consectetur-adipisicing-elit',
     );
   }
 
@@ -134,14 +127,6 @@ export class CustomerProductDetailComponent implements OnInit {
         'ipnets',
       )
     );
-  }
-
-  getRandomFloat(min: number, max: number, decimals: number) {
-    const str = (Math.random() * (max - min) + min).toFixed(
-      decimals,
-    );
-
-    return parseFloat(str);
   }
 
   pictureUrlToSanitize(url: string): SafeUrl {
@@ -198,8 +183,6 @@ export class CustomerProductDetailComponent implements OnInit {
           companyLabel: 'Jadlog',
           deadlineLabel: 'Chega entre sexta 27/10 e segunda 30/10',
         });
-
-        console.log(this.shippingList);
 
       }, 1000);
     }

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Product } from '../../models';
 
 @Component({
   selector: 'app-carousel-product-itens',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class CarouselProductItensComponent {
 
+  @Input() title: string | null = null;
+  @Input() products: Product[] | null = null;
+
+  constructor() {
+
+  }
 }

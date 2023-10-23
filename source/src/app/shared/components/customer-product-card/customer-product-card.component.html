@@ -1,19 +1,14 @@
-<div class="card text-center card-product-detail">
+<div class="card text-center card-product-detail" *ngIf="product">
   <div
     class="image-bg"
-    [ngStyle]="{ 'background-image': 'url(' + images[0] + ')' }"
+    [ngStyle]="{ 'background-image': 'url(' + product.pictures[0] }"
     routerLink="/lorem-ipsum-dolor-sit-amet-consectetur-adipisicing-elit"
+    (click)="doOpenDetail()"
   ></div>
-  <!-- <img
-    [src]="getProductSafePicture(images[0])"
-    class="card-img-top"
-    alt="..."
-    routerLink="/lorem-ipsum-dolor-sit-amet-consectetur-adipisicing-elit"
-  /> -->
   <div class="card-body border-top-primary">
     <!-- <h5 class="card-title">Titulo do Produto</h5> -->
     <p class="card-text">
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+      {{ product.title }}
     </p>
   </div>
   <ul class="list-group list-group-flush">
@@ -34,7 +29,7 @@
     <li
       class="list-group-item text-primary fs-4 fw-bold list-group-item-padding-none"
     >
-      R$158,50
+      {{ product.price | currency : "BRL" }}
     </li>
     <li class="list-group-item list-group-item-padding-none">
       <span class="fw-bold">3</span> x de
@@ -46,13 +41,5 @@
       <i class="bi bi-bag-plus-fill"></i>
       Comprar
     </button>
-    <!-- <div class="d-flex justify-content-around"> -->
-    <!-- <button
-        class="btn btn-light btn-circled"
-        routerLink="lorem-ipsum-dolor-sit-amet-consectetur-adipisicing-elit"
-      >
-        <i class="bi bi-eye"></i> Espiar
-      </button> -->
-    <!-- </div> -->
   </div>
 </div>
