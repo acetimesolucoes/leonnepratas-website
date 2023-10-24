@@ -8,7 +8,7 @@ jobs:
     name: Build and Push to GCP
     runs-on: ubuntu-latest
     env:
-      IMAGE_NAME: leonnepratas-ssr
+      IMAGE_NAME: leonnepratas-client-ssr
       PROJECT_ID: leonne-pratas
     steps:
       - name: Checkout
