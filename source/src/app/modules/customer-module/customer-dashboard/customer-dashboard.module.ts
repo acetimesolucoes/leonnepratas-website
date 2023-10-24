@@ -6,6 +6,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { CustomerAccountComponent } from './customer-account/customer-account.component';
 import { CustomerPurchasesComponent } from './customer-purchases/customer-purchases.component';
 import { CustomerDashboardLayoutComponent } from './customer-dashboard-layout/customer-dashboard-layout.component';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { UserToken } from 'src/app/shared/models';
 
 
 @NgModule({
@@ -18,6 +20,7 @@ import { CustomerDashboardLayoutComponent } from './customer-dashboard-layout/cu
     CommonModule,
     CustomerDashboardRoutingModule,
     SharedModule,
-  ]
+  ],
+  providers: [AuthenticationService,]
 })
 export class CustomerDashboardModule { }
