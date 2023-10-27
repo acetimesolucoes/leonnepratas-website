@@ -42,3 +42,8 @@
 # System files
 .DS_Store
 Thumbs.db
+
+terraform/.terraform
+terraform/.terraform**.**
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { DomSanitizer, Meta, SafeUrl, Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { AppStateService } from 'src/app/services/app-state.service';
 import { UserStateService } from 'src/app/services/user-state.service';
@@ -33,11 +33,13 @@ export class CustomerProductDetailComponent implements OnInit {
   form: FormGroup;
 
   constructor(
-    private activatedRoute: ActivatedRoute,
+    private route: ActivatedRoute,
     private sanitizer: DomSanitizer,
     private formBuilder: FormBuilder,
     private appState: AppStateService,
     private userState: UserStateService,
+    private title: Title,
+    private meta: Meta,
   ) {
     this.form = this.formBuilder.group({
       color: [],
@@ -48,6 +50,7 @@ export class CustomerProductDetailComponent implements OnInit {
     // this.postalCode = '32412216';
     // this.postalCodeSaved = true;
     // this.shippingCalculate();
+
   }
 
   ngOnInit(): void {
@@ -55,6 +58,12 @@ export class CustomerProductDetailComponent implements OnInit {
     this.getProductCategories();
     this.getProductSubCategories();
     this.getUserPostalCode();
+  }
+
+  updateSiteTags() {
+    if (this.product && this.product.title) {
+      this.title.setTitle(`Leonnè Pratas - ${this.product?.title}`);
+    }
   }
 
   generateRandomPictureUrl(width: number, height: number) {
@@ -82,6 +91,8 @@ export class CustomerProductDetailComponent implements OnInit {
       pictures,
       'lorem-ipsum-dolor-sit-amet-consectetur-adipisicing-elit',
     );
+
+    this.updateSiteTags();
   }
 
   getProductCategories() {

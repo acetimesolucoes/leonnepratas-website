@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/shared/models';
 import { MathUtils } from 'src/app/utils';
 
@@ -11,7 +13,17 @@ export class CustomerHomeComponent {
 
   products: Product[] = [];
 
-  constructor() {
+  constructor(private route: ActivatedRoute, private title: Title, private meta: Meta,) {
+    this.route.data.subscribe((data: any) => {
+      if (data.title) {
+        this.title.setTitle(data.title);
+        this.meta.updateTag({
+          name: 'description',
+          content: `Somos especialistas em joias em Prata 925, 950 e Ouro 750 em 18k legítimas. Nossas coleções de joias são produzidas e selecionadas com muito carinho e cuidado, visando sempre a qualidade e satisfação de nossos clientes.`
+        });
+      }
+    });
+
     this.getProducts();
   }
 

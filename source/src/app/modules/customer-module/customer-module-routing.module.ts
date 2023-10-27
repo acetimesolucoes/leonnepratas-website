@@ -34,6 +34,9 @@ const routes: Routes = [
       {
         path: '',
         component: CustomerHomeComponent,
+        data: {
+          title: 'Leonnè Pratas - Joias em Prata 925, 950 e Ouro 18k Legítimas'
+        }
       },
       {
         path: 'categorias/:param',
@@ -42,18 +45,30 @@ const routes: Routes = [
       {
         path: 'politica-de-privacidade',
         component: CustomerPoliticasDePrivacidadeComponent,
+        data: {
+          title: 'Leonnè Pratas - Política de Privacidade'
+        }
       },
       {
         path: 'politica-de-garantia',
         component: CustomerPoliticasDeGarantiaComponent,
+        data: {
+          title: 'Leonnè Pratas - Política de Garantia'
+        }
       },
       {
         path: 'politica-de-troca',
         component: CustomerPoliticasDeTrocaComponent,
+        data: {
+          title: 'Leonnè Pratas - Política de Troca e Garantia'
+        }
       },
       {
         path: 'promocao-frete-gratis',
         component: CustomerPromocaoFreteGratisComponent,
+        data: {
+          title: 'Leonnè Pratas - Promoção Frete Grátis'
+        }
       },
       {
         path: ':id',
