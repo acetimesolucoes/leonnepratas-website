@@ -4,7 +4,7 @@ resource "aws_vpc" "leonnepratas_vpc" {
   enable_dns_support   = true
 
   tags = {
-    Name = "leonnepratas_vpc_1"
+    Name = "leonnepratas_vpc"
   }
 }
 

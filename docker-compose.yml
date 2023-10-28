@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  client_ssr:
+    container_name: "leonnepratas_client_ssr"
+    image: leonnepratas_client_ssr
+    user: root
+    working_dir: /app/
+    volumes:
+      - ./:/app/
+    expose:
+      - 80
+    ports:
+      - 80:4000
+    command: "/./app/docker/nginx/start.sh"
