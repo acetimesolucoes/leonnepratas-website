@@ -5,43 +5,39 @@
   [pauseOnFocus]="pauseOnFocus"
   (slide)="onSlide($event)"
 >
-  <ng-template ngbSlide *ngFor="let img of images; index as i">
+  <ng-template ngbSlide *ngFor="let slide of slides; index as i">
     <!-- <div class="carousel-caption">
       <h3>My slide {{ i + 1 }} title</h3>
     </div> -->
-    <a
-      href="https://www.google.fr/?q=Number+{{ i + 1 }}"
-      target="_blank"
-      rel="nofollow noopener noreferrer"
-    >
+    <a [href]="slide.href" target="_blank" rel="nofollow noopener noreferrer">
       <div class="picsum-img-wrapper">
         <img
-          [src]="img.xs"
-          alt="My image {{ i + 1 }} description"
+          [src]="slide.midia.xs.url"
+          [alt]="slide.midia.xs.description"
           class="carousel-image d-block d-sm-none d-md-none d-lg-none d-xl-none"
         />
 
         <img
-          [src]="img.sm"
-          alt="My image {{ i + 1 }} description"
+          [src]="slide.midia.sm.url"
+          [alt]="slide.midia.sm.description"
           class="carousel-image d-none d-sm-block d-md-none d-lg-none d-xl-none"
         />
 
         <img
-          [src]="img.md"
-          alt="My image {{ i + 1 }} description"
+          [src]="slide.midia.md.url"
+          [alt]="slide.midia.md.description"
           class="carousel-image d-none d-sm-none d-md-block d-lg-none d-xl-none"
         />
 
         <img
-          [src]="img.lg"
-          alt="My image {{ i + 1 }} description"
+          [src]="slide.midia.lg.url"
+          [alt]="slide.midia.lg.description"
           class="carousel-image d-none d-sm-none d-md-none d-lg-block d-xl-none"
         />
 
         <img
-          [src]="img.xl"
-          alt="My image {{ i + 1 }} description"
+          [src]="slide.midia.xl.url"
+          [alt]="slide.midia.xl.description"
           class="carousel-image d-none d-sm-none d-md-none d-lg-none d-xl-block"
         />
       </div>
