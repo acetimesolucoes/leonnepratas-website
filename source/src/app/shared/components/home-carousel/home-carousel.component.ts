@@ -24,23 +24,23 @@ export class HomeCarouselComponent {
       href: 'https://www.leonnepratas.com.br',
       midia: {
         xs: {
-          url: `./../../assets/slides/slide-1/slide-1.1-400_500.png`,
+          url: `./../../assets/slides/slide-1/compressed/slide-1.1-400_500.webp`,
           description: 'My description'
         },
         sm: {
-          url: `./../../assets/slides/slide-1/slide-1.1-700_800.png`,
+          url: `./../../assets/slides/slide-1/compressed/slide-1.1-700_800.webp`,
           description: 'My description'
         },
         md: {
-          url: `./../../assets/slides/slide-1/slide-1.1-900_750.png`,
+          url: `./../../assets/slides/slide-1/compressed/slide-1.1-900_750.webp`,
           description: 'My description'
         },
         lg: {
-          url: `./../../assets/slides/slide-1/slide-1.1-1280_900.png`,
+          url: `./../../assets/slides/slide-1/compressed/slide-1.1-1280_900.webp`,
           description: 'My description'
         },
         xl: {
-          url: `./../../assets/slides/slide-1/slide-1.1-2900_900.png`,
+          url: `./../../assets/slides/slide-1/compressed/slide-1.1-2900_900.webp`,
           description: 'My description'
         },
       }

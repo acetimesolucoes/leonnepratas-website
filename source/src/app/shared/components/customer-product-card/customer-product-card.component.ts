@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class CustomerProductCardComponent {
 
-  random = Math.floor(Math.random() * 1000 - 1);
+  random = Math.floor((Math.random() * 7) + 1);
 
   @Input() product: Product | null = null;
 
@@ -43,7 +43,8 @@ export class CustomerProductCardComponent {
         'Lorem, ipsum dolor sit amet consectetur adipisicing elit.',
         1,
         158.90,
-        `https://picsum.photos/id/${this.random}/75/75`,
+        // `https://picsum.photos/id/${this.random}/75/75`,
+        `../../assets/products/compressed-${this.random}.jpg`,
         'lorem-ipsum-dolor-sit-amet-consectetur-adipisicing-elit'
       )
     );

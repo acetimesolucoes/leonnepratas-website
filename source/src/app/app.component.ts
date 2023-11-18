@@ -26,7 +26,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.appStateService.setOnToLoading();
+    this.appStateService.setOnToLoading(0);
   }
 
   getInLoading() {

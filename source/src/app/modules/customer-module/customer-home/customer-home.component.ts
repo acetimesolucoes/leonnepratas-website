@@ -29,7 +29,7 @@ export class CustomerHomeComponent {
 
   async getProducts() {
     for (let i = 0; i < 16; i++) {
-      let random = Math.floor(Math.random() * 1000 - 1);
+      let random = Math.floor((Math.random() * 7) + 1);
       let randomAmount = MathUtils.getRandomFloat(280.80, 15.99, 2);
 
       this.products.push(new Product(
@@ -37,7 +37,8 @@ export class CustomerHomeComponent {
         'Lorem, ipsum dolor sit amet consectetur adipisicing elit.',
         5,
         randomAmount,
-        [`https://picsum.photos/id/${random}/900/1250`],
+        // [`https://picsum.photos/id/${random}/900/1250`],
+        [`../../assets/products/compressed-${random}.jpg`],
         'lorem-ipsum-dolor-sit-amet-consectetur-adipisicing-elit',
       ));
     }
